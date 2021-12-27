@@ -42,6 +42,9 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
 
+  -- colorschemes
+  use "sainnhe/everforest"
+
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
   if packer_bootstrap then
