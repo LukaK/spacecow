@@ -13,3 +13,7 @@ keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 
 -- nvim-tree keybindings
 keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
+
+-- t comment mappings
+keymap("n", "<leader>c", ":TComment<CR>", opts)
+keymap("v", "<leader>c", ":TCommentMaybeInline<CR>", opts)

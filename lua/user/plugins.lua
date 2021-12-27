@@ -65,9 +65,14 @@ return packer.startup(function(use)
   use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]] }
 
   -- fuzzy search
-  use {'nvim-telescope/telescope.nvim', after = "plenary.nvim"}
+  use {'nvim-telescope/telescope.nvim', after = "plenary.nvim", config = [[require('user.config.telescope')]]}
   use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
+  -- TODO: make media files work with telescope
+  -- use 'nvim-telescope/telescope-media-files.nvim'
 
+  -- TODO: Find lua replacement for t comment
+  -- code commenting
+  use "vim-scripts/tComment"
 
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
