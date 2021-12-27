@@ -9,6 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+-- TODO: Add explicit check where the file is located .config/nvim
 -- TODO: Rewrite when support for autocommands come
 -- automatically sync packer packages when saving plugins.lua
 vim.cmd [[
@@ -35,6 +36,9 @@ packer.init {
 
 return packer.startup(function(use)
 
+  -- it is recommened to put impatient.nvim before any other plugins
+  use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
+
   -- package manager itself
   use "wbthomason/packer.nvim"
 
@@ -42,8 +46,23 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
 
+  -- completions plugins
+  use {"onsails/lspkind-nvim", event = "BufEnter"}
+  use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('user.config.nvim-cmp')]]}
+  use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+  use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
+  use {"hrsh7th/cmp-path", after = "nvim-cmp"}
+  use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
+
+  -- lsp
+  use "williamboman/nvim-lsp-installer"
+  use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('user.config.lsp')]]}
+
   -- colorschemes
   use "sainnhe/everforest"
+
+  -- directory navigation
+  use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]] }
 
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
