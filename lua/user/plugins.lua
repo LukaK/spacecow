@@ -64,6 +64,11 @@ return packer.startup(function(use)
   -- directory navigation
   use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]] }
 
+  -- fuzzy search
+  use {'nvim-telescope/telescope.nvim', after = "plenary.nvim"}
+  use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
+
+
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
   if packer_bootstrap then
