@@ -60,6 +60,8 @@ return packer.startup(function(use)
 
   -- colorschemes
   use "sainnhe/everforest"
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
+  use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
   -- directory navigation
   use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]] }
