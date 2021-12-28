@@ -87,6 +87,38 @@ return packer.startup(function(use)
   -- when integration with fugitive comes
   -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
+  -- Python plugins
+  use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
+  use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
+
+  -- TODO: See if it is necessary
+  -- interactive shell for testing programs
+  -- use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
+
+  -- TODO: Set plugin up
+  -- Show match number and index for searching
+  use {
+    'kevinhwang91/nvim-hlslens',
+    branch = 'main',
+    keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
+    config = [[require('user.config.hlslens')]]
+  }
+
+  -- TODO: See if this is needed
+  -- -- Stay after pressing * and search selected text
+  -- use({"haya14busa/vim-asterisk", event = 'VimEnter'})
+
+  -- TODO: Configure
+  -- statusline
+  use {'nvim-lualine/lualine.nvim', config = [[require('user.config.statusline')]]}
+
+  -- TODO: Configure
+  -- indent line
+  use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
+
+  -- Highlight URLs inside vim
+  use "itchyny/vim-highlighturl"
+
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
   if packer_bootstrap then
