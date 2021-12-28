@@ -1,8 +1,4 @@
-require "user.globals"
-require "user.plugins"
-require "user.colorscheme"
-require "user.mappings"
-require "user.options"
+require "user"
 
 -- source vimscript files that are not yet supported
 local nvim_path = vim.fn.stdpath('config')
