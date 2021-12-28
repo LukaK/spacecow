@@ -25,26 +25,18 @@ if not status_ok then
   return
 end
 
--- configure packer to use floating window
-packer.init {
-  display = {
-    open_fn = function ()
-      return require('packer.util').float { border = "rounded"}
-    end,
-  },
-}
-
 return packer.startup(function(use)
 
   -- it is recommened to put impatient.nvim before any other plugins
   use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 
   -- package manager itself
-  use "wbthomason/packer.nvim"
+  use{"wbthomason/packer.nvim", config = [[require('user.config.packer')]]}
 
   -- useful lua functions for plugins
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
+  use "kyazdani42/nvim-web-devicons"
 
   -- completions plugins
   use {"onsails/lspkind-nvim", event = "BufEnter"}
@@ -56,6 +48,7 @@ return packer.startup(function(use)
   use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
   -- use {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"}
 
+  -- TODO: Change ultisnips for lua snippets
   -- snippets
   -- use "L3MON4D3/LuaSnip"
   -- use "rafamadriz/friendly-snippets"
@@ -85,8 +78,7 @@ return packer.startup(function(use)
   use "vim-scripts/tComment"
 
   -- buffers
-  -- TODO: Add buffer mappings
-  use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('user.config.bufferline')]] })
+  use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
 
   -- version control: git
   use "mhinz/vim-signify"

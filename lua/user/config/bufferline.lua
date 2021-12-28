@@ -1,4 +1,9 @@
-require("bufferline").setup({
+local status_ok, bufferline = pcall(require, "bufferline")
+if not status_ok then
+  return
+end
+
+bufferline.setup({
   options = {
     numbers = "buffer_id",
     close_command = "bdelete! %d",
@@ -30,7 +35,7 @@ require("bufferline").setup({
 
       return true
     end,
-    show_buffer_icons = false,
+    show_buffer_icons = true,
     show_buffer_close_icons = true,
     show_close_icon = true,
     show_tab_indicators = true,
@@ -39,5 +44,15 @@ require("bufferline").setup({
     enforce_regular_tabs = false,
     always_show_bufferline = true,
     sort_by = "id",
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = function()
+          return vim.fn.getcwd()
+        end,
+        highlight = "Directory",
+        text_align = "left"
+      }
+    },
   },
 })

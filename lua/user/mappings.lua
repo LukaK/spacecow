@@ -131,3 +131,11 @@ vim.g.UltiSnipsExpandTrigger = '<leader>e'
 vim.g.UltiSnipsJumpForwardTrigger = '<leader>a'
 vim.g.UltiSnipsJumpBackwardTrigger = '<leader>b'
 vim.g.UltiSnipsSnippetDirectories = {'UltiSnips', 'my_snippets'}
+
+-- TODO: Move mappings to the plugin configuration
+-- bufferline
+keymap("n", "<Right>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<Left>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "gb", ":BufferLinePick<CR>", opts)
