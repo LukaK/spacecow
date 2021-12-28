@@ -19,6 +19,7 @@ keymap("n", "<leader>Q", ":<C-U>qa!<CR>", opts)
 -- telescope keybindings
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fm", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
 
 -- " Navigation in the location and quickfix list
 -- nnoremap <silent> [l :<C-U>lprevious<CR>zv

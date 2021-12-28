@@ -70,15 +70,15 @@ return packer.startup(function(use)
   use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
 
   -- fuzzy search
-  use {'nvim-telescope/telescope.nvim', after = "plenary.nvim", config = [[require('user.config.telescope')]]}
-  use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
   -- TODO: make media files work with telescope
-  -- use 'nvim-telescope/telescope-media-files.nvim'
+  use "nvim-telescope/telescope-media-files.nvim"
+  use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
+  use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
   -- code commenting
   use "vim-scripts/tComment"
 
-  -- buffers
+  -- buffers management
   use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
 
   -- version control: git

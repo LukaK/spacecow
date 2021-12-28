@@ -4,14 +4,14 @@ if not status_ok then
 end
 
 -- load extension
--- telescope.load_extension("media_files")
+telescope.load_extension("media_files")
 
-telescope.setup{
+telescope.setup {
   extensions = {
-    -- media_files = {
-    --  -- filetypes whitelist
-    --  filetypes = {"png", "webp", "jpg", "jpeg"},
-    --  find_cmd = "rg"
-    -- }
-  }
+    media_files = {
+     -- filetypes whitelist
+     filetypes = {"png", "webp", "jpg", "jpeg"},
+     find_cmd = "rg"
+    },
+  },
 }
