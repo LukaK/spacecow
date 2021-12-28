@@ -76,6 +76,10 @@ return packer.startup(function(use)
   -- code commenting
   use "vim-scripts/tComment"
 
+  -- buffers
+  -- Super fast buffer jump
+  use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('user.config.bufferline')]] })
+
   -- version control: git
   use "mhinz/vim-signify"
   use "tpope/vim-fugitive"

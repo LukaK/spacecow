@@ -36,7 +36,7 @@ local custom_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
   vim.cmd([[
-    autocmd CursorHold <buffer> lua require('config.lsp').show_line_diagnostics()
+    autocmd CursorHold <buffer> lua require('user.config.lsp.lsp').show_line_diagnostics()
   ]])
 
   -- Set some key bindings conditional on server capabilities
