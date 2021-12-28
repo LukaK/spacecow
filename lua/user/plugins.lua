@@ -77,7 +77,7 @@ return packer.startup(function(use)
   use "vim-scripts/tComment"
 
   -- buffers
-  -- Super fast buffer jump
+  -- TODO: Add buffer mappings
   use({ "akinsho/bufferline.nvim", event = "VimEnter", config = [[require('user.config.bufferline')]] })
 
   -- version control: git
