@@ -118,6 +118,17 @@ return packer.startup(function(use)
   -- Highlight URLs inside vim
   use "itchyny/vim-highlighturl"
 
+  -- navigate tags and lsp symbols
+  use {"liuchengxu/vista.vim", cmd = "Vista"}
+
+  -- notification plugin
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.defer_fn(function() require('user.config.nvim-notify') end, 2000)
+      end
+    })
+
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
   if packer_bootstrap then

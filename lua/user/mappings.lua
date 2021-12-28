@@ -120,6 +120,9 @@ keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
 -- nvim-tree mappings
 keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
 
+-- vista mappings
+keymap("n", "<leader>f", ":Vista!!<CR>", opts)
+
 -- t-comment mappings
 keymap("n", "<leader>c", ":TComment<CR>", opts)
 keymap("v", "<leader>c", ":TCommentMaybeInline<CR>", opts)
