@@ -66,8 +66,8 @@ M.custom_attach = function(client, bufnr)
 end end
 
 -- define capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Change diagnostic signs.
 vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticSignError" })

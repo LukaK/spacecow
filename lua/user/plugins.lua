@@ -56,10 +56,17 @@ return packer.startup(function(use)
   use "SirVer/ultisnips"
   use({ "honza/vim-snippets", after = 'ultisnips'})
 
-  -- TODO: Configure and organize lsp servers
   -- lsp
-  use {"williamboman/nvim-lsp-installer", cmd = {"LspInstallInfo", "LspInstall"}}
+  -- TODO: Go over documentation and update lsp configuration with new functionality
+  -- TODO: Add yaml schemas for aws into the language server
+  -- TODO: Go keymappings and set them up
+  -- TODO: Personalize lsp utils module with your stuff
+  use {"williamboman/nvim-lsp-installer", cmd = {"LspInstallInfo", "LspInstall"}, config = [[require('user.config.lsp_installer')]]}
+  -- use {"neovim/nvim-lspconfig", after = {"cmp-nvim-lsp", "schemastore"}, config = [[require('user.config.lsp')]]}
   use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('user.config.lsp')]]}
+
+  -- json schemas for language server
+  use "b0o/schemastore.nvim"
 
   -- colorscheme and sintax highlighting
   use "sainnhe/everforest"
