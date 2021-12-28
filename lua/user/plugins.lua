@@ -121,6 +121,14 @@ return packer.startup(function(use)
   -- navigate tags and lsp symbols
   use {"liuchengxu/vista.vim", cmd = "Vista"}
 
+  -- TODO: Add nvim-autopairs
+
+  -- TODO: see if you neet this
+  -- use "svermeulen/vim-yoink"
+
+    -- Repeat vim motions
+    use "tpope/vim-repeat"
+
   -- notification plugin
     use({
       "rcarriga/nvim-notify",
@@ -128,6 +136,70 @@ return packer.startup(function(use)
         vim.defer_fn(function() require('user.config.nvim-notify') end, 2000)
       end
     })
+
+  -- TODO: Add mapping for formatting and setup formatters for python, lua and so on
+  -- Auto format tools
+  use { "sbdchd/neoformat", cmd = { "Neoformat" } }
+
+  -- -- Another markdown plugin
+  use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+  --
+  -- -- Faster footnote generation
+  use({ "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } })
+  --
+  -- -- Vim tabular plugin for manipulate tabular, required by markdown plugins
+  use({ "godlygeek/tabular", cmd = { "Tabularize" } })
+
+  -- -- markdown previewer
+  -- use({
+  --   "iamcco/markdown-preview.nvim",
+  --   run = function()
+  --     fn["mkdp#util#install"]()
+  --   end,
+  --   ft = { "markdown" },
+  -- })
+
+  -- Markdown JSON header highlight plugin
+  use({ "elzr/vim-json", ft = { "json", "markdown" } })
+
+  -- Additional powerful text object for vim, this plugin should be studied
+  -- carefully to use its full power
+  use "wellle/targets.vim"
+
+  -- Add indent object for vim (useful for languages like Python)
+  use "michaeljsmith/vim-indent-object"
+
+  -- Modern matchit implementation
+  use "andymass/vim-matchup"
+
+  -- Smoothie motions
+  use {
+    "karb94/neoscroll.nvim",
+    config = function()
+      vim.defer_fn(function() require('user.config.neoscroll') end, 2000)
+    end
+  }
+
+  -- vim sintax for toml
+  use { "cespare/vim-toml", ft = { "toml" }, branch = "main" }
+
+  -- The missing auto-completion for cmdline!
+  use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
+
+  --  TODO: Works but see why it is not working for F (telescope) mappings
+  -- showing keybindings
+  use {"folke/which-key.nvim",
+    config = function()
+      vim.defer_fn(function() require('user.config.which-key') end, 2000)
+    end
+  }
+
+  -- show and trim trailing whitespaces
+  use 'jdhao/whitespace.nvim'
+
+  -- TODO: Learn how to use quickfix windows in your workflow and then find solution
+  -- better quickfix windows
+  -- use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
 
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
