@@ -112,7 +112,6 @@ return packer.startup(function(use)
   -- statusline
   use {'nvim-lualine/lualine.nvim', config = [[require('user.config.statusline')]]}
 
-  -- TODO: Configure
   -- indent line
   use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
 

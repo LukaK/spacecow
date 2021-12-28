@@ -127,5 +127,5 @@ augroup END
 augroup VCenterCursor
   au!
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ let &scrolloff=winheight(win_getid())/2
+        \ let &scrolloff=winheight(win_getid())/2 + 1
 augroup END
