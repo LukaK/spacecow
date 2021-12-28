@@ -25,6 +25,7 @@ if not status_ok then
   return
 end
 
+-- TODO: move mappings to pluggins and make them buffer related
 return packer.startup(function(use)
 
   -- it is recommened to put impatient.nvim before any other plugins
@@ -55,17 +56,18 @@ return packer.startup(function(use)
   use "SirVer/ultisnips"
   use({ "honza/vim-snippets", after = 'ultisnips'})
 
+  -- TODO: Configure and organize lsp servers
   -- lsp
-  use "williamboman/nvim-lsp-installer"
+  use {"williamboman/nvim-lsp-installer", cmd = {"LspInstallInfo", "LspInstall"}}
   use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('user.config.lsp')]]}
 
-  -- colorschemes
+  -- colorscheme and sintax highlighting
   use "sainnhe/everforest"
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
   use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
   -- directory navigation
-  use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]] }
+  use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
 
   -- fuzzy search
   use {'nvim-telescope/telescope.nvim', after = "plenary.nvim", config = [[require('user.config.telescope')]]}
@@ -73,7 +75,6 @@ return packer.startup(function(use)
   -- TODO: make media files work with telescope
   -- use 'nvim-telescope/telescope-media-files.nvim'
 
-  -- TODO: Find lua replacement for t comment
   -- code commenting
   use "vim-scripts/tComment"
 
@@ -84,7 +85,8 @@ return packer.startup(function(use)
   use "mhinz/vim-signify"
   use "tpope/vim-fugitive"
   use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-  use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
+  -- when integration with fugitive comes
+  -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins

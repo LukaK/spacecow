@@ -117,25 +117,27 @@ keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
 
 
 
--- nvim-tree keybindings
+-- nvim-tree mappings
 keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
 
--- t comment mappings
+-- t-comment mappings
 keymap("n", "<leader>c", ":TComment<CR>", opts)
 keymap("v", "<leader>c", ":TCommentMaybeInline<CR>", opts)
 
 -- TODO: Change for another snippets
--- ultisnips
+-- ultisnips mappings
 vim.g.UltiSnipsEnableSnipMate = 0
 vim.g.UltiSnipsExpandTrigger = '<leader>e'
 vim.g.UltiSnipsJumpForwardTrigger = '<leader>a'
 vim.g.UltiSnipsJumpBackwardTrigger = '<leader>b'
 vim.g.UltiSnipsSnippetDirectories = {'UltiSnips', 'my_snippets'}
 
--- TODO: Move mappings to the plugin configuration
 -- bufferline
 keymap("n", "<Right>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<Left>", ":BufferLineCyclePrev<CR>", opts)
 keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
 keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
 keymap("n", "gb", ":BufferLinePick<CR>", opts)
+
+-- -- vim-fugitive mappings
+keymap("n", "<leader>G", ":Git<CR>", opts)

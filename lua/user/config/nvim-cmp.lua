@@ -1,6 +1,15 @@
--- Setup nvim-cmp.
-local cmp = require "cmp"
-local lspkind = require "lspkind"
+-- load cmp module
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+  return
+end
+
+-- load lspkind formatter
+local status_ok, lspkind = pcall(require, "lspkind")
+if not status_ok then
+  return
+end
+
 -- local luasnip = require "luasnip"
 
 cmp.setup({
@@ -40,7 +49,6 @@ cmp.setup({
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
-    { name = 'emoji', insert = true, } -- emoji completion
   },
   completion = {
     keyword_length = 1,
@@ -59,7 +67,6 @@ cmp.setup({
         nvim_lua = "[Lua]",
         path = "[Path]",
         buffer = "[Buffer]",
-        emoji = "[Emoji]",
       },
     }),
   },
