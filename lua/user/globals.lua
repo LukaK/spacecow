@@ -1,7 +1,7 @@
 -- local function file_exists(name)
 local utils = require "user.utils"
 
--- set python 3 path
+-- define python 3 path
 local python3_path = vim.fn.exepath("python")
 local python3_pyenv_path = vim.env["PYENV_ROOT"] .. '/versions/py3nvim/python'
 
@@ -9,6 +9,7 @@ if utils.file_exists(python3_pyenv_path) then
   python3_path = python3_pyenv_path
 end
 
+-- define global options
 local glob_options = {
   -- python 3 provider
   python3_host_prog = python3_path,
