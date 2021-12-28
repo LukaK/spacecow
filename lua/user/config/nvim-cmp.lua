@@ -1,12 +1,15 @@
 -- Setup nvim-cmp.
-local cmp = require'cmp'
-local lspkind = require'lspkind'
+local cmp = require "cmp"
+local lspkind = require "lspkind"
+-- local luasnip = require "luasnip"
 
 cmp.setup({
   snippet = {
     expand = function(args)
       -- For `ultisnips` user.
       vim.fn["UltiSnips#Anon"](args.body)
+      -- lua-snippets
+      -- luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -32,6 +35,7 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' }, -- For nvim-lsp
+    -- { name = 'luasnip' }, -- For luasnip user.
     { name = 'ultisnips' }, -- For ultisnips user.
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
@@ -51,6 +55,7 @@ cmp.setup({
       menu = {
         nvim_lsp = "[LSP]",
         ultisnips = "[US]",
+        -- luasnip = "[SNP]",
         nvim_lua = "[Lua]",
         path = "[Path]",
         buffer = "[Buffer]",
