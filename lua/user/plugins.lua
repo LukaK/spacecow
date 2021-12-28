@@ -76,6 +76,12 @@ return packer.startup(function(use)
   -- code commenting
   use "vim-scripts/tComment"
 
+  -- version control: git
+  use "mhinz/vim-signify"
+  use "tpope/vim-fugitive"
+  use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
+  use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
+
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
   if packer_bootstrap then
