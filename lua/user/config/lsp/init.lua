@@ -1,6 +1,6 @@
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then
-  return
-end
-
-require "user.config.lsp.lsp"
+-- load server configurations
+require "user.config.lsp.lsp_utils"
+require "user.config.lsp.clangd"
+require "user.config.lsp.pylsp"
+require "user.config.lsp.sumneko_lua"
+require "user.config.lsp.vimls"
