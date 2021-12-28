@@ -66,7 +66,7 @@ return packer.startup(function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
   use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
-  -- directory navigation
+  -- directory management and navigation
   use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
 
   -- fuzzy search

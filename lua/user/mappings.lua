@@ -3,10 +3,6 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
--- leader key
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 -- easy save
 keymap("n", "<leader>w", ":<C-U>update<CR>", opts)
 
