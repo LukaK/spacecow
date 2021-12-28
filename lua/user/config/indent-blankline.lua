@@ -1,4 +1,9 @@
-require("indent_blankline").setup({
+local status_ok, indent_blankline = pcall(require, "indent_blankline")
+if not status_ok then
+  return
+end
+
+indent_blankline.setup({
   -- U+2502 may also be a good choice, it will be on the middle of cursor.
   -- U+250A is also a good choice
   char = "▏",
@@ -8,16 +13,17 @@ require("indent_blankline").setup({
   filetype_exclude = { "help", "git", "markdown", "snippets", "text", "gitconfig", "alpha" },
 })
 
-vim.cmd([[
-function! Should_activate_indentblankline() abort
-  if index(g:indent_blankline_filetype_exclude, &filetype) == -1
-    IndentBlanklineEnable
-  endif
-endfunction
-
-augroup indent_blankline
-  autocmd!
-  autocmd InsertEnter * IndentBlanklineDisable
-  autocmd InsertLeave * call Should_activate_indentblankline()
-augroup END
-]])
+-- check if indentation line impact prductivity when present in insert mode
+-- vim.cmd([[
+-- function! Should_activate_indentblankline() abort
+--   if index(g:indent_blankline_filetype_exclude, &filetype) == -1
+--     IndentBlanklineEnable
+--   endif
+-- endfunction
+--
+-- augroup indent_blankline
+--   autocmd!
+--   autocmd InsertEnter * IndentBlanklineDisable
+--   autocmd InsertLeave * call Should_activate_indentblankline()
+-- augroup END
+-- ]])
