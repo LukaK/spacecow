@@ -61,7 +61,7 @@ return packer.startup(function(use)
   -- TODO: Add yaml schemas for aws into the language server
   -- TODO: Go keymappings and set them up
   -- TODO: Personalize lsp utils module with your stuff
-  use {"williamboman/nvim-lsp-installer", cmd = {"LspInstallInfo", "LspInstall"}, config = [[require('user.config.lsp_installer')]]}
+  use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp_installer')]]}
   -- use {"neovim/nvim-lspconfig", after = {"cmp-nvim-lsp", "schemastore"}, config = [[require('user.config.lsp')]]}
   use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('user.config.lsp')]]}
 
