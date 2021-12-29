@@ -142,10 +142,6 @@ return packer.startup(function(use)
       end
     })
 
-  -- TODO: Add mapping for formatting and setup formatters for python, lua and so on
-  -- Auto format tools
-  use { "sbdchd/neoformat", cmd = { "Neoformat" } }
-
   -- -- Another markdown plugin
   use({ "plasticboy/vim-markdown", ft = { "markdown" } })
   --
