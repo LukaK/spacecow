@@ -39,6 +39,14 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"
   use "kyazdani42/nvim-web-devicons"
 
+  -- notification plugin
+    use({
+      "rcarriga/nvim-notify",
+      config = function()
+        vim.defer_fn(function() require('user.config.nvim-notify') end, 2000)
+      end
+    })
+
   -- completions plugins
   use {"onsails/lspkind-nvim", event = "BufEnter"}
   use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('user.config.nvim-cmp')]]}
@@ -60,8 +68,8 @@ return packer.startup(function(use)
   -- TODO: Go over documentation and update lsp configuration with new functionality
   -- TODO: Go keymappings and set them up
   -- TODO: Personalize lsp utils module with your stuff
-  use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp_installer')]]}
-  use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('user.config.lsp')]]}
+  use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]]}
+  use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
 
   -- json schemas for language server
   use "b0o/schemastore.nvim"
@@ -134,13 +142,6 @@ return packer.startup(function(use)
     -- Repeat vim motions
     use "tpope/vim-repeat"
 
-  -- notification plugin
-    use({
-      "rcarriga/nvim-notify",
-      config = function()
-        vim.defer_fn(function() require('user.config.nvim-notify') end, 2000)
-      end
-    })
 
   -- -- Another markdown plugin
   use({ "plasticboy/vim-markdown", ft = { "markdown" } })

@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: Change configuration to suit you
 local api = vim.api
 local lsp = vim.lsp
 
@@ -14,7 +15,7 @@ function M.show_line_diagnostics()
   vim.diagnostic.open_float(nil, opts)
 end
 
-M.custom_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -36,7 +37,7 @@ M.custom_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
   vim.cmd([[
-    autocmd CursorHold <buffer> lua require('user.config.lsp.lsp_utils').show_line_diagnostics()
+    autocmd CursorHold <buffer> lua require('user.config.lsp.utils').show_line_diagnostics()
   ]])
 
   -- Set some key bindings conditional on server capabilities

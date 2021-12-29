@@ -1,18 +1,9 @@
--- load modules
-local lspconfig_status, lspconfig = pcall(require, "lspconfig")
-local lsp_utils_status, lsp_utils = pcall(require, "user.config.lsp.lsp_utils")
+local M = {}
 
--- TODO: Add dynamic message that has filename with a call
-if not lspconfig_status or not lsp_utils_status then
-  print("Unable to load modules in clangd lsp configuration...")
-  return
-end
-
--- configure server
+-- check if server is installed
 local sumneko_binary_path = vim.fn.exepath("lua-language-server")
 if sumneko_binary_path == "" then
-  print("Lua language server not installed")
-  return
+  return M
 end
 
 local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary_path, ":h:h:h")
@@ -21,9 +12,8 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-lspconfig.sumneko_lua.setup({
-  on_attach = lsp_utils.custom_attach,
-  capabilities = lsp_utils.capabilities,
+
+M.options = {
   cmd = { sumneko_binary_path, "-E", sumneko_root_path .. "/main.lua" },
   settings = {
     Lua = {
@@ -47,4 +37,6 @@ lspconfig.sumneko_lua.setup({
       },
     },
   },
-})
+}
+
+return M
