@@ -54,13 +54,11 @@ return packer.startup(function(use)
   use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
   use {"hrsh7th/cmp-path", after = "nvim-cmp"}
   use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
-  use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-  -- use {"saadparwaiz1/cmp_luasnip", after = "nvim-cmp"}
+  -- TODO: See what is this and how to use it
+  use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
 
-  -- TODO: Change ultisnips for lua snippets
   -- snippets
-  -- use "L3MON4D3/LuaSnip"
-  -- use "rafamadriz/friendly-snippets"
+  use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
   use "SirVer/ultisnips"
   use({ "honza/vim-snippets", after = 'ultisnips'})
 

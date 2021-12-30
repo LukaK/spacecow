@@ -1,54 +1,92 @@
 -- load cmp module
-local status_ok, cmp = pcall(require, "cmp")
-if not status_ok then
+local status_ok_cmp, cmp = pcall(require, "cmp")
+local status_ok_lspkind, lspkind = pcall(require, "lspkind")
+if not status_ok_cmp or not status_ok_lspkind then
   return
 end
 
--- load lspkind formatter
-local status_ok, lspkind = pcall(require, "lspkind")
-if not status_ok then
-  return
-end
-
--- local luasnip = require "luasnip"
 
 cmp.setup({
   snippet = {
     expand = function(args)
       -- For `ultisnips` user.
       vim.fn["UltiSnips#Anon"](args.body)
-      -- lua-snippets
-      -- luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      else
-        fallback()
-      end
-    end,
-    -- ['<Esc>'] = cmp.mapping.close(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ["<Tab>"] = cmp.mapping({
+        c = function()
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+                cmp.complete()
+            end
+        end,
+        i = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+            elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+            else
+                fallback()
+            end
+        end,
+        s = function(fallback)
+            if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+                vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), 'm', true)
+            else
+                fallback()
+            end
+        end
+    }),
+    ["<S-Tab>"] = cmp.mapping({
+        c = function()
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+            else
+                cmp.complete()
+            end
+        end,
+        i = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+            elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+            else
+                fallback()
+            end
+        end,
+        s = function(fallback)
+            if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+                return vim.api.nvim_feedkeys( t("<Plug>(ultisnips_jump_backward)"), 'm', true)
+            else
+                fallback()
+            end
+        end
+    }),
+
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping({
+        i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        c = function(fallback)
+            if cmp.visible() then
+                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+            else
+                fallback()
+            end
+        end
+    }),
+
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), {'i', 'c'}),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), {'i', 'c'}),
   },
   sources = {
     { name = 'nvim_lsp' }, -- For nvim-lsp
-    -- { name = 'luasnip' }, -- For luasnip user.
     { name = 'ultisnips' }, -- For ultisnips user.
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
+    { name = 'cmdline' }, -- for vim cmdline
   },
   completion = {
     keyword_length = 1,
@@ -61,15 +99,34 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = false,
       menu = {
-        nvim_lsp = "[LSP]",
-        ultisnips = "[US]",
-        -- luasnip = "[SNP]",
+        nvim_lsp = "[Lsp]",
+        ultisnips = "[Snip]",
         nvim_lua = "[Lua]",
         path = "[Path]",
         buffer = "[Buffer]",
+        cmdline = "[Cmd]",
       },
     }),
   },
+})
+
+-- Use buffer source for `/`.
+cmp.setup.cmdline('/', {
+    completion = { autocomplete = false },
+    sources = {
+        -- { name = 'buffer' }
+        { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
+    }
+})
+
+-- Use cmdline & path source for ':'.
+cmp.setup.cmdline(':', {
+    completion = { autocomplete = false },
+    sources = cmp.config.sources({
+        { name = 'path' }
+        }, {
+        { name = 'cmdline' }
+    })
 })
 
 vim.cmd("hi link CmpItemMenu Comment")
