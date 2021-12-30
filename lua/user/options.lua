@@ -163,6 +163,8 @@ local options = {
   -- do no wrap
   wrap = false,
 
+  -- quickfix window look
+  qftf = '{info -> v:lua._G.qftf(info)}',
 }
 
 -- TODO: Rewrite this to lua

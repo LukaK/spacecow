@@ -1,3 +1,4 @@
+require "user.lua_globals"
 require "user.globals"
 require "user.plugins"
 require "user.colorscheme"

@@ -196,9 +196,8 @@ return packer.startup(function(use)
   -- show and trim trailing whitespaces
   use 'jdhao/whitespace.nvim'
 
-  -- TODO: Learn how to use quickfix windows in your workflow and then find solution
   -- better quickfix windows
-  -- use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
+  use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
 
   -- automatically set up your configuration after cloning packer.nvim
   -- put this at the end after all plugins
