@@ -56,13 +56,3 @@ bufferline.setup({
     },
   },
 })
-
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
--- bufferline keybindings
-keymap("n", "<Right>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<Left>", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
-keymap("n", "gb", ":BufferLinePick<CR>", opts)

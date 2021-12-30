@@ -106,3 +106,36 @@ keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
 -- for ch in [',', '.', '!', '?', ';', ':']
 --   execute printf('inoremap %s %s<C-g>u', ch, ch)
 -- endfor
+
+
+-- nvim-tree mappings
+keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
+
+-- t-comment mappings
+keymap("n", "<leader>c", ":TComment<CR>", opts)
+keymap("v", "<leader>c", ":TCommentMaybeInline<CR>", opts)
+
+-- bufferline keybindings
+keymap("n", "<Right>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<Left>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "gb", ":BufferLinePick<CR>", opts)
+
+-- telescope keybindings
+keymap("n", "Ff", ":Telescope find_files<CR>", opts)
+keymap("n", "Fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "Fm", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
+
+-- ultisnips mappings
+vim.g.UltiSnipsEnableSnipMate = 0
+vim.g.UltiSnipsExpandTrigger = '<leader>e'
+vim.g.UltiSnipsJumpForwardTrigger = '<leader>a'
+vim.g.UltiSnipsJumpBackwardTrigger = '<leader>b'
+vim.g.UltiSnipsSnippetDirectories = {'UltiSnips', 'my_snippets'}
+
+-- vista mappings
+keymap("n", "<leader>f", ":Vista!!<CR>", opts)
+
+-- -- vim-fugitive mappings
+keymap("n", "<leader>G", ":Git<CR>", opts)

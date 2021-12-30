@@ -1,4 +1,11 @@
-require("neoscroll").setup({
+local status_ok_neoscroll, neoscroll = pcall(require, "neoscroll")
+local status_ok_neoscroll_config, neoscroll_config = pcall(require, "neoscroll.config")
+
+if not status_ok_neoscroll or not status_ok_neoscroll_config then
+  return
+end
+
+neoscroll.setup({
   easing_function = "quadratic",
 })
 
@@ -18,4 +25,4 @@ t["zt"] = { "zt", { "10" } }
 t["zz"] = { "zz", { "10" } }
 t["zb"] = { "zb", { "10" } }
 
-require("neoscroll.config").set_mappings(t)
+neoscroll_config.set_mappings(t)
