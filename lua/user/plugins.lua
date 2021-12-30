@@ -63,9 +63,8 @@ return packer.startup(function(use)
   use({ "honza/vim-snippets", after = 'ultisnips'})
 
   -- lsp
-  -- TODO: Go over documentation and update lsp configuration with new functionality
-  -- TODO: Go keymappings and set them up
-  -- TODO: Personalize lsp utils module with your stuff
+  -- TODO: See if server configurations are ok
+  -- TODO: Add option for lsp to be configured with configs within a project for linting, formatting and so on
   use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]]}
   use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
 
