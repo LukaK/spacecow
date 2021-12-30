@@ -13,3 +13,9 @@ nvim_tree.setup {
     relativenumber = true,
   }
 }
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- nvim-tree mappings
+keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)

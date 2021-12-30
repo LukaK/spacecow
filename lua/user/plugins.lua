@@ -25,7 +25,6 @@ if not status_ok then
   return
 end
 
--- TODO: move mappings to pluggins and make them buffer related
 return packer.startup(function(use)
 
   -- it is recommened to put impatient.nvim before any other plugins
@@ -59,7 +58,7 @@ return packer.startup(function(use)
 
   -- snippets
   use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-  use "SirVer/ultisnips"
+  use {"SirVer/ultisnips", config = [[require('user.config.ultisnips')]]}
   use({ "honza/vim-snippets", after = 'ultisnips'})
 
   -- lsp
@@ -85,14 +84,14 @@ return packer.startup(function(use)
   use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
   -- code commenting
-  use "vim-scripts/tComment"
+  use {"vim-scripts/tComment", config = [[require('user.config.tcomment')]]}
 
   -- buffers management
   use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
 
   -- version control: git
   use "mhinz/vim-signify"
-  use "tpope/vim-fugitive"
+  use {"tpope/vim-fugitive", config = [[require('user.config.vim-fugitive')]]}
   use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
   -- when integration with fugitive comes
   -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
@@ -129,7 +128,7 @@ return packer.startup(function(use)
   use "itchyny/vim-highlighturl"
 
   -- navigate tags and lsp symbols
-  use {"liuchengxu/vista.vim", cmd = "Vista"}
+  use {"liuchengxu/vista.vim", cmd = "Vista", config = [[require('user.config.vista')]]}
 
   -- TODO: Add nvim-autopairs
 
