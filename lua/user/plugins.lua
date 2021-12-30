@@ -104,7 +104,6 @@ return packer.startup(function(use)
   -- interactive shell for testing programs
   -- use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
 
-  -- TODO: Set plugin up
   -- Show match number and index for searching
   use {
     'kevinhwang91/nvim-hlslens',
@@ -113,13 +112,11 @@ return packer.startup(function(use)
     config = [[require('user.config.hlslens')]]
   }
 
-  -- TODO: See if this is needed
   -- -- Stay after pressing * and search selected text
-  -- use({"haya14busa/vim-asterisk", event = 'VimEnter'})
+  use "haya14busa/vim-asterisk"
 
-  -- TODO: Configure
   -- statusline
-  use {'nvim-lualine/lualine.nvim', config = [[require('user.config.statusline')]]}
+  use {'nvim-lualine/lualine.nvim', config = [[require('user.config.lualine')]]}
 
   -- indent line
   use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
