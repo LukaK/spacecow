@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- easy save
-keymap("n", "<leader>w", ":<C-U>update<CR>", opts)
+keymap("n", "<leader>s", ":<C-U>update<CR>", opts)
 
 -- saves the file if modified and quit
 keymap("n", "<leader>q", ":<C-U>x<CR>", opts)

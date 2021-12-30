@@ -4,6 +4,7 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 
+-- auto show line diagnostics
 function M.show_line_diagnostics()
   local opts = {
     focusable = false,
@@ -15,6 +16,7 @@ function M.show_line_diagnostics()
   vim.diagnostic.open_float(nil, opts)
 end
 
+-- buffer configuration when server is attached
 M.on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     api.nvim_buf_set_keymap(bufnr, ...)
@@ -22,33 +24,29 @@ M.on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = { noremap = true, silent = true }
-  buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", "<C-]>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
+  -- get information
   buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  buf_set_keymap("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+  buf_set_keymap("n", "gi", "<Cmd>lua require('user.config.lsp.utils').show_line_diagnostics()<CR>", opts)
+  buf_set_keymap("n", "gI", "<cmd>lua vim.diagnostic.setqflist({open = true})<CR>", opts)
   buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setqflist({open = true})<CR>", opts)
-  buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-  vim.cmd([[
-    autocmd CursorHold <buffer> lua require('user.config.lsp.utils').show_line_diagnostics()
-  ]])
+  -- workspace management
+  buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+  buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 
-  -- Set some key bindings conditional on server capabilities
+  -- actions
+  buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
-  end
-  if client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("x", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR><ESC>", opts)
+    buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
   end
 
-  -- The blow command will highlight the current variable and its usages in the buffer.
+  -- highlight variable and usage in the buffer
   if client.resolved_capabilities.document_highlight then
     vim.cmd([[
       hi link LspReferenceRead Visual
@@ -83,13 +81,6 @@ vim.diagnostic.config({
   signs = true,
   severity_sort = true,
 })
-
--- lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
---   underline = false,
---   virtual_text = false,
---   signs = true,
---   update_in_insert = false,
--- })
 
 -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
 lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
