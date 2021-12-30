@@ -2,6 +2,7 @@ local fn = vim.fn
 
 -- automatically install packer plugin
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local packer_bootstrap = nil
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 
@@ -127,7 +128,8 @@ return packer.startup(function(use)
   -- navigate tags and lsp symbols
   use "liuchengxu/vista.vim"
 
-  -- TODO: Add nvim-autopairs
+  -- Add nvim-autopairs
+  use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
 
   -- TODO: see if you neet this
   -- use "svermeulen/vim-yoink"

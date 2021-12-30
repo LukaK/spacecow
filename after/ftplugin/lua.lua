@@ -13,7 +13,7 @@ local options = {
   shiftwidth = 2,
 
   -- expand tab to spaces so that tabs are spaces
-  expandtab = true,q
+  expandtab = true,
 }
 
 for k, v in pairs(options) do

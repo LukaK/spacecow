@@ -5,6 +5,9 @@ if not status_ok_cmp or not status_ok_lspkind then
   return
 end
 
+local t = function(str)
+    return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 cmp.setup({
   snippet = {
