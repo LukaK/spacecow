@@ -94,7 +94,6 @@ augroup END
 "   au TextYankPost * silent! lua vim.highlight.on_yank{higroup="YankColor", timeout=300, on_visual=false}
 " augroup END
 
-" TODO: Maybe it is neccesary
 " augroup git_repo_check
 "   autocmd!
 "   autocmd VimEnter,DirChanged * call utils#Inside_git_repo()

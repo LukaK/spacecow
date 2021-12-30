@@ -8,7 +8,6 @@ end
 
 local M = {}
 
--- TODO: Add sumneko configuration
 M.options = {
 
   -- clangd settings

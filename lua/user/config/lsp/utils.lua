@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: Change configuration to suit you
 local api = vim.api
 local lsp = vim.lsp
 
