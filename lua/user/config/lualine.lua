@@ -45,7 +45,7 @@ local function mixed_indent()
   end
   if not mixed then return '' end
   if mixed_same_line ~= nil and mixed_same_line > 0 then
-     return 'MI:'..mixed_same_line
+    return 'MI:'..mixed_same_line
   end
   local space_indent_cnt = vim.fn.searchcount({pattern=space_pat, max_count=1e3}).total
   local tab_indent_cnt =  vim.fn.searchcount({pattern=tab_pat, max_count=1e3}).total

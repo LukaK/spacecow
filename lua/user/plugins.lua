@@ -28,18 +28,18 @@ end
 
 return packer.startup(function(use)
 
-  -- it is recommened to put impatient.nvim before any other plugins
-  use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
+    -- it is recommened to put impatient.nvim before any other plugins
+    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
 
-  -- package manager itself
-  use{"wbthomason/packer.nvim", config = [[require('user.config.packer')]]}
+    -- package manager itself
+    use{"wbthomason/packer.nvim", config = [[require('user.config.packer')]]}
 
-  -- useful lua functions for plugins
-  use "nvim-lua/popup.nvim"
-  use "nvim-lua/plenary.nvim"
-  use "kyazdani42/nvim-web-devicons"
+    -- useful lua functions for plugins
+    use "nvim-lua/popup.nvim"
+    use "nvim-lua/plenary.nvim"
+    use "kyazdani42/nvim-web-devicons"
 
-  -- notification plugin
+    -- notification plugin
     use({
       "rcarriga/nvim-notify",
       config = function()
@@ -47,159 +47,159 @@ return packer.startup(function(use)
       end
     })
 
-  -- completions plugins
-  use {"onsails/lspkind-nvim", event = "BufEnter"}
-  use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('user.config.nvim-cmp')]]}
-  use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
-  use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
-  use {"hrsh7th/cmp-path", after = "nvim-cmp"}
-  use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
-  -- TODO: See what is this and how to use it
-  use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
+    -- completions plugins
+    use {"onsails/lspkind-nvim", event = "BufEnter"}
+    use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('user.config.nvim-cmp')]]}
+    use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-path", after = "nvim-cmp"}
+    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
+    -- TODO: See what is this and how to use it
+    use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
 
-  -- snippets
-  use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-  use "SirVer/ultisnips"
-  use({ "honza/vim-snippets", after = 'ultisnips'})
+    -- snippets
+    use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
+    use "SirVer/ultisnips"
+    use({ "honza/vim-snippets", after = 'ultisnips'})
 
-  -- lsp
-  -- TODO: See if server configurations are ok
-  -- TODO: Add option for lsp to be configured with configs within a project for linting, formatting and so on
-  use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]]}
-  use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
+    -- lsp
+    -- TODO: See if server configurations are ok
+    -- TODO: Add option for lsp to be configured with configs within a project for linting, formatting and so on
+    use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]]}
+    use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
 
-  -- json schemas for language server
-  use "b0o/schemastore.nvim"
+    -- json schemas for language server
+    use "b0o/schemastore.nvim"
 
-  -- colorscheme and sintax highlighting
-  use "sainnhe/everforest"
-  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
-  use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
+    -- colorscheme and sintax highlighting
+    use "sainnhe/everforest"
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
+    use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
-  -- directory management and navigation
-  use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
+    -- directory management and navigation
+    use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
 
-  -- fuzzy search
-  use "nvim-telescope/telescope-media-files.nvim"
-  use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
-  use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
+    -- fuzzy search
+    use "nvim-telescope/telescope-media-files.nvim"
+    use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
+    use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
-  -- code commenting
-  use "vim-scripts/tComment"
+    -- code commenting
+    use "vim-scripts/tComment"
 
-  -- buffers management
-  use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
+    -- buffers management
+    use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
 
-  -- version control: git
-  use "mhinz/vim-signify"
-  use "tpope/vim-fugitive"
-  use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
-  -- when integration with fugitive comes
-  -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
+    -- version control: git
+    use "mhinz/vim-signify"
+    use "tpope/vim-fugitive"
+    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
+    -- when integration with fugitive comes
+    -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
-  -- Python plugins
-  use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
-  use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
+    -- Python plugins
+    use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
+    use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 
-  -- TODO: See if it is necessary
-  -- interactive shell for testing programs
-  -- use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
+    -- TODO: See if it is necessary
+    -- interactive shell for testing programs
+    -- use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
 
-  -- Show match number and index for searching
-  use {
-    'kevinhwang91/nvim-hlslens',
-    branch = 'main',
-    keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
-    config = [[require('user.config.hlslens')]]
-  }
+    -- Show match number and index for searching
+    use {
+      'kevinhwang91/nvim-hlslens',
+      branch = 'main',
+      keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
+      config = [[require('user.config.hlslens')]]
+    }
 
-  -- -- Stay after pressing * and search selected text
-  use "haya14busa/vim-asterisk"
+    -- -- Stay after pressing * and search selected text
+    use "haya14busa/vim-asterisk"
 
-  -- statusline
-  use {'nvim-lualine/lualine.nvim', config = [[require('user.config.lualine')]]}
+    -- statusline
+    use {'nvim-lualine/lualine.nvim', config = [[require('user.config.lualine')]]}
 
-  -- indent line
-  use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
+    -- indent line
+    use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
 
-  -- Highlight URLs inside vim
-  use "itchyny/vim-highlighturl"
+    -- Highlight URLs inside vim
+    use "itchyny/vim-highlighturl"
 
-  -- navigate tags and lsp symbols
-  use "liuchengxu/vista.vim"
+    -- navigate tags and lsp symbols
+    use "liuchengxu/vista.vim"
 
-  -- Add nvim-autopairs
-  use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
+    -- Add nvim-autopairs
+    use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
 
-  -- TODO: see if you neet this
-  -- use "svermeulen/vim-yoink"
+    -- TODO: see if you neet this
+    -- use "svermeulen/vim-yoink"
 
     -- Repeat vim motions
     use "tpope/vim-repeat"
 
 
-  -- -- Another markdown plugin
-  use({ "plasticboy/vim-markdown", ft = { "markdown" } })
-  --
-  -- -- Faster footnote generation
-  use({ "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } })
-  --
-  -- -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-  use({ "godlygeek/tabular", cmd = { "Tabularize" } })
+    -- -- Another markdown plugin
+    use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+    --
+    -- -- Faster footnote generation
+    use({ "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } })
+    --
+    -- -- Vim tabular plugin for manipulate tabular, required by markdown plugins
+    use({ "godlygeek/tabular", cmd = { "Tabularize" } })
 
-  -- -- markdown previewer
-  -- use({
-  --   "iamcco/markdown-preview.nvim",
-  --   run = function()
-  --     fn["mkdp#util#install"]()
-  --   end,
-  --   ft = { "markdown" },
-  -- })
+    -- -- markdown previewer
+    -- use({
+    --   "iamcco/markdown-preview.nvim",
+    --   run = function()
+    --     fn["mkdp#util#install"]()
+    --   end,
+    --   ft = { "markdown" },
+    -- })
 
-  -- Markdown JSON header highlight plugin
-  use({ "elzr/vim-json", ft = { "json", "markdown" } })
+    -- Markdown JSON header highlight plugin
+    use({ "elzr/vim-json", ft = { "json", "markdown" } })
 
-  -- Additional powerful text object for vim, this plugin should be studied
-  -- carefully to use its full power
-  use "wellle/targets.vim"
+    -- Additional powerful text object for vim, this plugin should be studied
+    -- carefully to use its full power
+    use "wellle/targets.vim"
 
-  -- Add indent object for vim (useful for languages like Python)
-  use "michaeljsmith/vim-indent-object"
+    -- Add indent object for vim (useful for languages like Python)
+    use "michaeljsmith/vim-indent-object"
 
-  -- Modern matchit implementation
-  use "andymass/vim-matchup"
+    -- Modern matchit implementation
+    use "andymass/vim-matchup"
 
-  -- Smoothie motions
-  use {
-    "karb94/neoscroll.nvim",
-    config = function()
-      vim.defer_fn(function() require('user.config.neoscroll') end, 2000)
+    -- Smoothie motions
+    use {
+      "karb94/neoscroll.nvim",
+      config = function()
+        vim.defer_fn(function() require('user.config.neoscroll') end, 2000)
+      end
+    }
+
+    -- vim sintax for toml
+    use { "cespare/vim-toml", ft = { "toml" }, branch = "main" }
+
+    -- The missing auto-completion for cmdline!
+    use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
+
+    --  TODO: Works but see why it is not working for F (telescope) mappings
+    -- showing keybindings
+    use {"folke/which-key.nvim",
+      config = function()
+        vim.defer_fn(function() require('user.config.which-key') end, 2000)
+      end
+    }
+
+    -- show and trim trailing whitespaces
+    use 'jdhao/whitespace.nvim'
+
+    -- better quickfix windows
+    use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
+
+    -- automatically set up your configuration after cloning packer.nvim
+    -- put this at the end after all plugins
+    if packer_bootstrap then
+      require('packer').sync()
     end
-  }
-
-  -- vim sintax for toml
-  use { "cespare/vim-toml", ft = { "toml" }, branch = "main" }
-
-  -- The missing auto-completion for cmdline!
-  use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
-
-  --  TODO: Works but see why it is not working for F (telescope) mappings
-  -- showing keybindings
-  use {"folke/which-key.nvim",
-    config = function()
-      vim.defer_fn(function() require('user.config.which-key') end, 2000)
-    end
-  }
-
-  -- show and trim trailing whitespaces
-  use 'jdhao/whitespace.nvim'
-
-  -- better quickfix windows
-  use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
-
-  -- automatically set up your configuration after cloning packer.nvim
-  -- put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)

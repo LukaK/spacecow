@@ -3,6 +3,7 @@ local server_configs_status, server_configs = pcall(require, "user.config.lsp.se
 local lsp_utils_status, lsp_utils = pcall(require, "user.config.lsp.utils")
 
 -- TODO: Fix print to include more info where is the problem
+-- TODO: Do you wan to use vim.notify or print
 if not lsp_installer_status_ok or not server_configs_status  or not lsp_utils_status then
   print("Unable to load modules")
   return

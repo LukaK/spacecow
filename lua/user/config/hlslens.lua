@@ -7,8 +7,8 @@ local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
 hlslens.setup({
-    calm_down = true,
-    nearest_only = true,
+  calm_down = true,
+  nearest_only = true,
 })
 
 keymap("n", "n", "<Cmd>execute('normal! ' . v:count1 . 'nzzzv')<CR><Cmd>lua require('hlslens').start()<CR>", opts)

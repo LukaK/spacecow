@@ -57,11 +57,11 @@ M.on_attach = function(client, bufnr)
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]])
-   if vim.g.logging_level == 'debug' then
-    local msg = string.format("Language server %s started!", client.name)
-    vim.notify(msg, 'info', {title = 'Nvim-config'})
-  end
-end end
+    if vim.g.logging_level == 'debug' then
+      local msg = string.format("Language server %s started!", client.name)
+      vim.notify(msg, 'info', {title = 'Nvim-config'})
+    end
+  end end
 
 -- define capabilities
 M.capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())

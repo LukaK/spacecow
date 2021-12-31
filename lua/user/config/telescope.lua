@@ -9,9 +9,9 @@ telescope.load_extension("media_files")
 telescope.setup {
   extensions = {
     media_files = {
-     -- filetypes whitelist
-     filetypes = {"png", "webp", "jpg", "jpeg"},
-     find_cmd = "rg"
+      -- filetypes whitelist
+      filetypes = {"png", "webp", "jpg", "jpeg"},
+      find_cmd = "rg"
     },
   },
 }

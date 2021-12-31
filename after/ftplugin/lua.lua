@@ -17,5 +17,5 @@ local options = {
 }
 
 for k, v in pairs(options) do
-    vim.bo[k] = v
+  vim.bo[k] = v
 end

@@ -1,0 +1,18 @@
+repos:
+  - repo: https://gitlab.com/pablodiehl/pre-commit-lua-formatter.git
+    rev: v1.0.0
+    hooks:
+      - id: lua-formatter
+        name: Lua Formatter
+        description: Formats Lua files using Lua Formatter.
+        entry: luaformatter -a
+        language: system
+        types: [file, lua]
+  - repo: https://github.com/Calinou/pre-commit-luacheck
+    rev: v1.0.0
+    hooks:
+      - id: luacheck
+        description: Lints Lua files using Luacheck.
+        entry: luacheck --config .config/luacheck.lua --
+        language: system
+        types: [file, lua]

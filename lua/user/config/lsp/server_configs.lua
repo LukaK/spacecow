@@ -10,47 +10,47 @@ local M = {}
 
 M.options = {
 
-  -- clangd settings
-  clangd = {
-    filetypes = { "c", "cpp", "cc" },
-    flags = {debounce_text_changes = 500},
-  },
-
-  -- jsonls settings
-  jsonls = {
-    settings = {
-      json = {schemas = require('schemastore').json.schemas(),},
+    -- clangd settings
+    clangd = {
+      filetypes = { "c", "cpp", "cc" },
+      flags = {debounce_text_changes = 500},
     },
-  },
 
-  -- pylsp settings
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pylint = { enabled = true, executable = "pylint" },
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          jedi_completion = { fuzzy = true },
-          pyls_isort = { enabled = true },
-          pylsp_mypy = { enabled = true },
-        },
+    -- jsonls settings
+    jsonls = {
+      settings = {
+        json = {schemas = require('schemastore').json.schemas(),},
       },
     },
-    flags = {debounce_text_changes = 200},
-  },
 
-  -- vimls settings
-  vimls = {flags = {debounce_text_changes = 500}},
+    -- pylsp settings
+    pylsp = {
+      settings = {
+        pylsp = {
+          plugins = {
+            pylint = { enabled = true, executable = "pylint" },
+            pyflakes = { enabled = false },
+            pycodestyle = { enabled = false },
+            jedi_completion = { fuzzy = true },
+            pyls_isort = { enabled = true },
+            pylsp_mypy = { enabled = true },
+          },
+        },
+      },
+      flags = {debounce_text_changes = 200},
+    },
 
-  -- ymalls settings
-  yamlls = {
-    filetypes = {"yaml", "yml"},
-    settings = {yaml = {schemas = require('schemastore').json.schemas()}}
-  },
+    -- vimls settings
+    vimls = {flags = {debounce_text_changes = 500}},
 
-  -- sumneko lua options
-  sumneko_lua = sumneko_lua.options,
+    -- ymalls settings
+    yamlls = {
+      filetypes = {"yaml", "yml"},
+      settings = {yaml = {schemas = require('schemastore').json.schemas()}}
+    },
+
+    -- sumneko lua options
+    sumneko_lua = sumneko_lua.options,
 }
 
 return M

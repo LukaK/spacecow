@@ -23,7 +23,7 @@ local options = {
 
   -- set clipboard
   clipboard = vim.opt.clipboard + "unnamedplus",
-  
+
   -- disable creating swapfiles, see https://stackoverflow.com/q/821902/6064933
   swapfile = false,
 
@@ -89,13 +89,13 @@ local options = {
   -- use list mode and customized listchars
   list = true,
   listchars={tab = '▸ ', extends = '❯', precedes = '❮', nbsp = '␣'},
-  
+
   -- auto-write the file based on some condition
   autowrite = true,
-  
+
   -- persistent undo even after you close a file and re-open it
   undofile = true,
-  
+
   -- do not show "match xx of xx" and other messages during auto-completion
   -- do not show search match count on bottom right (seriously, I would strain my
   -- neck looking at it). Using plugins like vim-anzu or nvim-hlslens is a better
@@ -105,61 +105,61 @@ local options = {
   -- set completeopt+=noinsert  " Auto select the first completion entry
   completeopt = vim.opt.completeopt + "menuone",  -- show menu even if there is only one item
   -- set completeopt-=preview  " Disable the preview window
-  
+
   -- maximum number of items to show in popup menu
   pumheight = 10,
-  
+
   -- pseudo transparency for completion menu
   pumblend = 10,
-  
+
   -- pseudo transparency for floating window
   winblend = 5,
-  
+
   -- insert mode key word completion setting
   complete = vim.opt.complete + "kspell" - "w" - "b" - "u" - "t",
-  
+
   -- spell languages
   spelllang = {"en", "cjk"},
-  
+
   -- show 9 spell suggestions at most
   spellsuggest = vim.opt.spellsuggest + "9",
-  
+
   -- align indent to next multiple value of shiftwidth. For its meaning,
   -- see http://vim.1045645.n5.nabble.com/shiftround-option-td5712100.html
   shiftround = true,
-  
+
   -- virtual edit is useful for visual block edit
   virtualedit = "block",
-  
+
   -- correctly break multi-byte characters such as CJK,
   -- see https://stackoverflow.com/q/32669814/6064933
   formatoptions = vim.opt.formatoptions + "mM",
-  
+
   -- text after this column number is not highlighted
   synmaxcol = 200,
   startofline = false,
-  
+
   -- enable true color support. Do not set this option if your terminal does not
   -- support true colors! For a comprehensive list of terminals supporting true
   -- colors, see https://github.com/termstandard/colors and https://gist.github.com/XVilka/8346728.
   termguicolors = true,
-  
+
   -- set up cursor color and shape in various mode, ref:
   -- https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal
   guicursor = {"n-v-c:block-Cursor/lCursor", "i-ci-ve:ver25-Cursor2/lCursor2", "r-cr:hor20", "o:hor20"},
 
   signcolumn = "auto:2",
-  
+
   -- remove certain character from file name pattern matching
   isfname = vim.opt.isfname - '=' - ',',
-  
+
   -- diff options
   -- show diff in vertical position
   -- show filler for deleted lines
   -- turn off diff when one file window is closed
   -- context for diff
   diffopt = {"vertical", "filler", "closeoff", "context:3", "internal", "indent-heuristic", "algorithm:histogram"},
-  
+
   -- do no wrap
   wrap = false,
 
