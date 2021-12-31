@@ -1,5 +1,5 @@
 -- load bigger server configurations
-local sumneko_lua_status, sumneko_lua = pcall(require, "user.config.lsp.sumneko_lua")
+local sumneko_lua_status, sumneko_lua_module = pcall(require, "user.config.lsp.sumneko_lua")
 if not sumneko_lua_status then
   print("Unable to load sumneko lua")
   return
@@ -50,7 +50,7 @@ M.options = {
     },
 
     -- sumneko lua options
-    sumneko_lua = sumneko_lua.options,
+    sumneko_lua = sumneko_lua_module.options,
 }
 
 return M
