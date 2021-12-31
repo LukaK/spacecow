@@ -133,7 +133,8 @@ local options = {
 
   -- correctly break multi-byte characters such as CJK,
   -- see https://stackoverflow.com/q/32669814/6064933
-  formatoptions = vim.opt.formatoptions + "mM",
+  -- dont insert comments on enter or on normal insert line
+  formatoptions = vim.opt.formatoptions + "mM" - "or",
 
   -- text after this column number is not highlighted
   synmaxcol = 200,

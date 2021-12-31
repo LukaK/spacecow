@@ -94,3 +94,5 @@ keymap("n", "<leader>f", ":Vista!!<CR>", opts)
 
 -- -- vim-fugitive mappings
 keymap("n", "<leader>G", ":Git<CR>", opts)
+
+-- TODO: Add mappings for inserting empty line where the cursor is
