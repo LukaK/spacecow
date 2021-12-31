@@ -13,14 +13,14 @@ keymap("n", "<leader>q", ":<C-U>x<CR>", opts)
 keymap("n", "<leader>Q", ":<C-U>qa!<CR>", opts)
 
 -- " Navigation in the location and quickfix list
--- nnoremap <silent> [l :<C-U>lprevious<CR>zv
--- nnoremap <silent> ]l :<C-U>lnext<CR>zv
--- nnoremap <silent> [L :<C-U>lfirst<CR>zv
--- nnoremap <silent> ]L :<C-U>llast<CR>zv
--- nnoremap <silent> [q :<C-U>cprevious<CR>zv
--- nnoremap <silent> ]q :<C-U>cnext<CR>zv
--- nnoremap <silent> [Q :<C-U>cfirst<CR>zv
--- nnoremap <silent> ]Q :<C-U>clast<CR>zv
+keymap("n", "[l", ":<C-U>lprevious<CR>zv", opts)
+keymap("n", "]l", ":<C-U>lnext<CR>zv", opts)
+keymap("n", "[L", ":<C-U>lfirst<CR>zv", opts)
+keymap("n", "]L", ":<C-U>lfirst<CR>zv", opts)
+keymap("n", "[q", ":<C-U>cprevious<CR>zv", opts)
+keymap("n", "]q", ":<C-U>cnext<CR>zv", opts)
+keymap("n", "[Q", ":<C-U>cfirst<CR>zv", opts)
+keymap("n", "]Q", ":<C-U>cfirst<CR>zv", opts)
 
 -- close location list or quickfix list if they are present,
 -- see https://superuser.com/q/355325/736190
@@ -30,6 +30,7 @@ keymap("n", "\\x", ":<C-U>windo lclose <bar> cclose <CR>", opts)
 -- window, see https://stackoverflow.com/q/4465095/6064933
 keymap("n", "\\d", ":<C-U>bprevious <bar> bdelete #<CR>", opts)
 
+-- TODO: Enable this
 -- " Move the cursor based on physical lines, not the actual lines.
 -- nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 -- nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -55,57 +56,34 @@ keymap("n", "<C-l>", ":wincmd l<CR>", opts)
 keymap("x", ">", ">gv", opts)
 keymap("x", "<", "<gv", opts)
 
--- " Tab-complete, see https://vi.stackexchange.com/q/19675/15292.
--- inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
--- inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
--- " Edit and reload init.vim quickly
--- nnoremap <silent> <leader>ev :<C-U>tabnew $MYVIMRC <bar> tcd %:h<cr>
+-- TODO: Enable this
+-- reload init.vim quickly
+-- keymap(
+--   "n",
+--   "<leader>sv",
+--   [[:<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar> call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>]],
+--   opts
+-- )
 -- nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
 --       \ call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>
 
--- reselect the text that has just been pasted, see also https://stackoverflow.com/a/4317090/6064933.
--- nnoremap <expr> <leader>v printf('`[%s`]', getregtype()[0])
-
 -- " Search in selected region
--- xnoremap / :<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>
+keymap("x", "/", [[:<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>]], opts)
 
--- TODO: Implement after the support
+-- TODO: Enable this
 -- -- find and replace (like Sublime Text 3)
--- keymap("n", "<leader>ss", ":%s/", opts)
--- keymap("x", "<leader>ss", ":s/", opts)
+-- nnoremap <leader>ss :%s/
+-- xnoremap <leader>ss :s/
 
 -- use Esc to quit builtin terminal
 keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
 
 -- change text without putting it into the vim register,
 -- see https://stackoverflow.com/q/54255/6064933
--- keymap("n", "c", "_c", opts)
--- keymap("n", "C", "_C", opts)
--- keymap("n", "cc", "_cc", opts)
--- keymap("x", "c", "_c", opts)
-
--- " Clear highlighting
--- if maparg('<C-L>', 'n') ==# ''
---   nnoremap <silent> <C-L> :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
--- endif
-
--- buffer movements
--- nnoremap <silent> gb :<C-U>call buf_utils#GoToBuffer(v:count, 'forward')<CR>
--- nnoremap <silent> gB :<C-U>call buf_utils#GoToBuffer(v:count, 'backward')<CR>
--- nnoremap <Left> <C-W>h
--- nnoremap <Right> <C-W>l
--- nnoremap <Up> <C-W>k
--- nnoremap <Down> <C-W>j
-
--- " Text objects for URL
--- xnoremap <silent> iu :<C-U>call text_obj#URL()<CR>
--- onoremap <silent> iu :<C-U>call text_obj#URL()<CR>
-
--- " Break inserted text into smaller undo units.
--- for ch in [',', '.', '!', '?', ';', ':']
---   execute printf('inoremap %s %s<C-g>u', ch, ch)
--- endfor
+keymap("n", "c", "\"_c", opts)
+keymap("n", "C", "\"_C", opts)
+keymap("n", "cc", "\"_cc", opts)
+keymap("x", "c", "\"_c", opts)
 
 
 -- nvim-tree mappings
