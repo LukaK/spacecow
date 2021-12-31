@@ -30,13 +30,6 @@ keymap("n", "\\x", ":<C-U>windo lclose <bar> cclose <CR>", opts)
 -- window, see https://stackoverflow.com/q/4465095/6064933
 keymap("n", "\\d", ":<C-U>bprevious <bar> bdelete #<CR>", opts)
 
--- TODO: Enable this
--- " Move the cursor based on physical lines, not the actual lines.
--- nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
--- nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
--- nnoremap ^ g^
--- nnoremap 0 g0
-
 -- do not include white space characters when using $ in visual mode,
 -- see https://vi.stackexchange.com/q/12607/15292
 keymap("x", "$", "g_", opts)
@@ -56,24 +49,8 @@ keymap("n", "<C-l>", ":wincmd l<CR>", opts)
 keymap("x", ">", ">gv", opts)
 keymap("x", "<", "<gv", opts)
 
--- TODO: Enable this
--- reload init.vim quickly
--- keymap(
---   "n",
---   "<leader>sv",
---   [[:<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar> call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>]],
---   opts
--- )
--- nnoremap <silent> <leader>sv :<C-U>silent update $MYVIMRC <bar> source $MYVIMRC <bar>
---       \ call v:lua.vim.notify("Nvim config successfully reloaded!", 'info', {'title': 'nvim-config'})<cr>
-
 -- " Search in selected region
 keymap("x", "/", [[:<C-U>call feedkeys('/\%>'.(line("'<")-1).'l\%<'.(line("'>")+1)."l")<CR>]], opts)
-
--- TODO: Enable this
--- -- find and replace (like Sublime Text 3)
--- nnoremap <leader>ss :%s/
--- xnoremap <leader>ss :s/
 
 -- use Esc to quit builtin terminal
 keymap("t", "<ESC>", "<C-\\><C-n>", term_opts)
