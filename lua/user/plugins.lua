@@ -10,8 +10,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- TODO: Add explicit check where the file is located .config/nvim
--- TODO: Rewrite when support for autocommands come
 -- automatically sync packer packages when saving plugins.lua
 vim.cmd [[
   augroup packer_user_config

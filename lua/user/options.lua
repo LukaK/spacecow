@@ -166,34 +166,21 @@ local options = {
 
   -- quickfix window look
   qftf = '{info -> v:lua._G.qftf(info)}',
+
+  -- backup setup
+  backup = false,
+-- backupskip = wildignore_value,
+-- backupdir = vim.fn.stdpath('data') .. "/backup/",
+-- backup = false,
+-- backupcopy = "yes",
 }
 
--- TODO: Rewrite this to lua
--- " Clipboard settings, always use clipboard for all delete, yank, change, put
--- " operation, see https://stackoverflow.com/q/30691466/6064933
--- if !empty(provider#clipboard#Executable())
---   set clipboard+=unnamedplus
--- endif
--- -- set up backup directory
--- let g:backupdir=expand(stdpath('data') . '/backup//')
--- let &backupdir=g:backupdir
--- " Skip backup for patterns in option wildignore
--- let &backupskip=&wildignore
--- set backup  " create backup for files
--- set backupcopy=yes  " copy the original file to backupdir and overwrite it
--- show hostname, full path of file and last-mod time on the window title. The
--- -- meaning of the format str for strftime can be found in
--- -- http://man7.org/linux/man-pages/man3/strftime.3.html. The function to get
--- -- lastmod time is drawn from https://stackoverflow.com/q/8426736/6064933
--- title = true,
--- titlestring = "",
--- titlestring=%{utils#Get_titlestr()}
--- " External program to use for grep command
--- if executable('rg')
---   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
---   set grepformat=%f:%l:%c:%m
--- endif
---
+-- external program to use for grep command
+if vim.fn.executable('rg') then
+  vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+  vim.opt.grepformat = '%f:%l:%c:%m'
+end
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
