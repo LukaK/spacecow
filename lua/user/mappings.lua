@@ -62,6 +62,9 @@ keymap("n", "C", "\"_C", opts)
 keymap("n", "cc", "\"_cc", opts)
 keymap("x", "c", "\"_c", opts)
 
+-- replace visual selection with text in register, but not contaminate the
+-- register, see also https://stackoverflow.com/q/10723700/6064933.
+keymap("x", "p", "\"_c<ESC>p", opts)
 
 -- nvim-tree mappings
 keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
@@ -95,4 +98,5 @@ keymap("n", "<leader>f", ":Vista!!<CR>", opts)
 -- -- vim-fugitive mappings
 keymap("n", "<leader>G", ":Git<CR>", opts)
 
--- TODO: Add mappings for inserting empty line where the cursor is
+-- insert newline from normal mode without going to insert mode
+keymap("n", "<leader><CR>", "m`o<ESC>", opts)

@@ -129,9 +129,6 @@ return packer.startup(function(use)
     -- Add nvim-autopairs
     use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
 
-    -- TODO: see if you neet this
-    -- use "svermeulen/vim-yoink"
-
     -- Repeat vim motions
     use "tpope/vim-repeat"
 
