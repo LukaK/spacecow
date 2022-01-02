@@ -82,6 +82,7 @@ keymap("n", "gb", ":BufferLinePick<CR>", opts)
 
 -- telescope keybindings
 keymap("n", "Ff", ":Telescope find_files<CR>", opts)
+keymap("n", "Fh", ":Telescope find_files hidden=true<CR>", opts)
 keymap("n", "Fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "Fm", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
 
