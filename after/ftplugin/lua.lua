@@ -1,4 +1,4 @@
-local options = {
+local buffer_options = {
   -- number of visual spaces per TAB
   tabstop = 2,
 
@@ -12,6 +12,15 @@ local options = {
   expandtab = true,
 }
 
-for k, v in pairs(options) do
+for k, v in pairs(buffer_options) do
   vim.bo[k] = v
+end
+
+
+local options = {
+  formatoptions = vim.opt.formatoptions - 'r' - 'o',
+}
+
+for k, v in pairs(options) do
+  vim.opt[k] = v
 end

@@ -119,7 +119,7 @@ local options = {
   complete = vim.opt.complete + "kspell" - "w" - "b" - "u" - "t",
 
   -- spell languages
-  spelllang = {"en", "cjk"},
+  spelllang = {"en", "cjk", "hr"},
 
   -- show 9 spell suggestions at most
   spellsuggest = vim.opt.spellsuggest + "9",
@@ -134,7 +134,7 @@ local options = {
   -- correctly break multi-byte characters such as CJK,
   -- see https://stackoverflow.com/q/32669814/6064933
   -- dont insert comments on enter or on normal insert line
-  formatoptions = vim.opt.formatoptions + "mM" - "or",
+  formatoptions = vim.opt.formatoptions + "mM" - "o" - "r",
 
   -- text after this column number is not highlighted
   synmaxcol = 200,

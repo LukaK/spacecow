@@ -100,3 +100,8 @@ keymap("n", "<leader>G", ":Git<CR>", opts)
 
 -- insert newline from normal mode without going to insert mode
 keymap("n", "<leader><CR>", "m`o<ESC>", opts)
+
+-- toggle spell checking (autosave does not play well with z=, so we disable it
+-- when we are doing spell checking)
+keymap("n", "<F3>", ":<C-U> set spell!<CR>", opts)
+keymap("i", "<F3>", ":<C-U> set spell!<CR>", opts)
