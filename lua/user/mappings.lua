@@ -106,3 +106,7 @@ keymap("n", "<leader><CR>", "m`o<ESC>", opts)
 -- when we are doing spell checking)
 keymap("n", "<F3>", ":<C-U> set spell!<CR>", opts)
 keymap("i", "<F3>", ":<C-U> set spell!<CR>", opts)
+
+-- TODO: Add condition if you are in neovim directory or add abs path
+-- reload vim source files
+keymap("n", "<leader>R", ":runtime! lua/user/**/*.lua<CR>", opts)
