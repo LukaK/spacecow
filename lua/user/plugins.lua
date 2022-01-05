@@ -143,13 +143,13 @@ return packer.startup(function(use)
     use({ "godlygeek/tabular", cmd = { "Tabularize" } })
 
     -- -- markdown previewer
-    -- use({
-    --   "iamcco/markdown-preview.nvim",
-    --   run = function()
-    --     fn["mkdp#util#install"]()
-    --   end,
-    --   ft = { "markdown" },
-    -- })
+    use({
+      "iamcco/markdown-preview.nvim",
+      run = function()
+        fn["mkdp#util#install"]()
+      end,
+      ft = { "markdown" },
+    })
 
     -- Markdown JSON header highlight plugin
     use({ "elzr/vim-json", ft = { "json", "markdown" } })
