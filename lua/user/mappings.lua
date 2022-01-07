@@ -110,3 +110,6 @@ keymap("i", "<F3>", ":<C-U> set spell!<CR>", opts)
 -- TODO: Add condition if you are in neovim directory or add abs path
 -- reload vim source files
 keymap("n", "<leader>R", ":runtime! lua/user/**/*.lua<CR>", opts)
+
+-- remove highlights
+keymap("n", "<esc>", ":nohlsearch<cr>", opts)
