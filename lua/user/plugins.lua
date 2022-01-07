@@ -79,6 +79,7 @@ return packer.startup(function(use)
 
     -- fuzzy search
     use "nvim-telescope/telescope-media-files.nvim"
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
     use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
