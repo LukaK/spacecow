@@ -84,6 +84,7 @@ keymap("n", "gb", ":BufferLinePick<CR>", opts)
 keymap("n", "Ff", ":Telescope find_files<CR>", opts)
 keymap("n", "FF", ":Telescope find_files hidden=true<CR>", opts)
 keymap("n", "Fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "FG", ":lua require('telescope.builtin').live_grep({additional_args=function() return {'--hidden'} end})<cr>", opts)
 keymap("n", "Fm", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
 
 -- ultisnips mappings
