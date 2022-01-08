@@ -3,6 +3,10 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
+-- remap for easy access to command mode
+keymap("n", ";", ":", opts)
+keymap("x", ";", ":", opts)
+
 -- easy save
 keymap("n", "<leader>s", ":<C-U>update<CR>", opts)
 
