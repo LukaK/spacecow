@@ -135,7 +135,7 @@ return packer.startup(function(use)
 
 
     -- -- Another markdown plugin
-    use({ "plasticboy/vim-markdown", ft = { "markdown" } })
+    use({ "plasticboy/vim-markdown", ft = { "markdown" }, config = [[require('user.config.vim-markdown')]]})
     --
     -- -- Faster footnote generation
     use({ "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } })
