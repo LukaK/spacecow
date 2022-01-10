@@ -100,9 +100,8 @@ return packer.startup(function(use)
     use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
     use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 
-    -- TODO: See if it is necessary
     -- interactive shell for testing programs
-    -- use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
+    use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
 
     -- Show match number and index for searching
     use {
