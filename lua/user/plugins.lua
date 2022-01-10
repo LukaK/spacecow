@@ -101,7 +101,7 @@ return packer.startup(function(use)
     use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
 
     -- interactive shell for testing programs
-    use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('config.iron')]]})
+    use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('user.config.iron')]]})
 
     -- Show match number and index for searching
     use {
