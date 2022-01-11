@@ -178,6 +178,9 @@ return packer.startup(function(use)
     -- The missing auto-completion for cmdline!
     use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
 
+    -- Toggle terminal
+    use {"akinsho/toggleterm.nvim", config = [[require('user.config.toggleterm')]]}
+
     --  TODO: Works but see why it is not working for F (telescope) mappings
     -- showing keybindings
     use {"folke/which-key.nvim",
