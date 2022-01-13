@@ -3,5 +3,5 @@ iron.core.set_config({
   preferred = {
     python = "ipython",
   },
-  repl_open_cmd = "vertical 60 split right",
+  repl_open_cmd = "vertical 60 split",
 })
