@@ -1,4 +1,8 @@
-local iron = require("iron")
+local status_ok, iron = pcall(require, "iron")
+if not status_ok then
+  return
+end
+
 iron.core.set_config({
   preferred = {
     python = "ipython",
