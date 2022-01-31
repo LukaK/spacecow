@@ -1,4 +1,5 @@
-local status_ok, nvim_autopairs = pcall(require, 'nvim-autopairs')
+local utils = require "user.utils"
+local status_ok, nvim_autopairs = utils.vprequire('nvim-autopairs', "nvim-autopairs")
 if not status_ok then
   return
 end

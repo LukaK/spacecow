@@ -1,4 +1,5 @@
-local status_ok, bufferline = pcall(require, "bufferline")
+local utils = require "user.utils"
+local status_ok, bufferline = utils.vprequire("bufferline", "bufferline")
 if not status_ok then
   return
 end

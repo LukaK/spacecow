@@ -1,4 +1,5 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
+local utils = require "user.utils"
+local status_ok, indent_blankline = utils.vprequire("indent_blankline", "indent_blankline")
 if not status_ok then
   return
 end

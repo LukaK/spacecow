@@ -1,4 +1,5 @@
-local status_ok, bqf = pcall(require, "bqf")
+local utils = require "user.utils"
+local status_ok, bqf = utils.vprequire("bqf", "bqf")
 if not status_ok then
   return
 end

@@ -1,11 +1,11 @@
-local lsp_installer_status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-local server_configs_status, server_configs = pcall(require, "user.config.lsp.server_configs")
-local lsp_utils_status, lsp_utils = pcall(require, "user.config.lsp.utils")
+local utils = require "user.utils"
+local lsp_installer_status_ok, lsp_installer = utils.vprequire("nvim-lsp-installer", "nvim-lsp-installer")
+local server_configs_status, server_configs = utils.vprequire("user.config.lsp.server_configs", "nvim-lsp-installer")
+local lsp_utils_status, lsp_utils = utils.vprequire("user.config.lsp.utils", "nvim-lsp-installer")
 
 -- TODO: Fix print to include more info where is the problem
 -- TODO: Do you wan to use vim.notify or print
 if not lsp_installer_status_ok or not server_configs_status  or not lsp_utils_status then
-  print("Unable to load modules")
   return
 end
 

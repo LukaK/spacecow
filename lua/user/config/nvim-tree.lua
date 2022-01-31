@@ -1,4 +1,5 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
+local utils = require "user.utils"
+local status_ok, nvim_tree = utils.vprequire("nvim-tree", "nvim-tree")
 if not status_ok then
   return
 end

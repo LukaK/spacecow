@@ -1,5 +1,6 @@
-local status_ok_neoscroll, neoscroll = pcall(require, "neoscroll")
-local status_ok_neoscroll_config, neoscroll_config = pcall(require, "neoscroll.config")
+local utils = require "user.utils"
+local status_ok_neoscroll, neoscroll = utils.vprequire("neoscroll", "neoscroll")
+local status_ok_neoscroll_config, neoscroll_config = utils.vprequire("neoscroll.config", "neoscroll")
 
 if not status_ok_neoscroll or not status_ok_neoscroll_config then
   return

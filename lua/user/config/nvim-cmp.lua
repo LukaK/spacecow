@@ -1,6 +1,7 @@
 -- load cmp module
-local status_ok_cmp, cmp = pcall(require, "cmp")
-local status_ok_lspkind, lspkind = pcall(require, "lspkind")
+local utils = require "user.utils"
+local status_ok_cmp, cmp = utils.vprequire("cmp", "nvim-cmp")
+local status_ok_lspkind, lspkind = utils.vprequire("lspkind", "nvim-cmp")
 if not status_ok_cmp or not status_ok_lspkind then
   return
 end

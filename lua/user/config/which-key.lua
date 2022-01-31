@@ -1,4 +1,5 @@
-local status_ok, which_key = pcall(require, "which-key")
+local utils = require "user.utils"
+local status_ok, which_key = utils.vprequire("which-key", "which-key")
 if not status_ok then
   return
 end

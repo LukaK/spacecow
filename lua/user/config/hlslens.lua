@@ -1,4 +1,5 @@
-local status_ok, hlslens = pcall(require, "hlslens")
+local utils = require "user.utils"
+local status_ok, hlslens = utils.vprequire("hlslens", "hlslens")
 if not status_ok then
   return
 end

@@ -1,4 +1,5 @@
-local status_ok, iron = pcall(require, "iron")
+local utils = require "user.utils"
+local status_ok, iron = utils.vprequire("iron", "iron")
 if not status_ok then
   return
 end
