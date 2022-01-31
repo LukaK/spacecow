@@ -1,7 +1,10 @@
+local utils = require "user.utils"
+
 -- load bigger server configurations
-local sumneko_lua_status, sumneko_lua_module = pcall(require, "user.config.lsp.sumneko_lua")
-if not sumneko_lua_status then
-  print("Unable to load sumneko lua")
+local sumneko_lua_status, sumneko_lua_module = utils.vprequire("user.config.lsp.sumneko_lua", "server_configs")
+local yamlls_status, yamlls_module = utils.vprequire("user.config.lsp.yamlls", "server_configs")
+
+if not sumneko_lua_status or not yamlls_status then
   return
 end
 
@@ -44,10 +47,7 @@ M.options = {
     vimls = {flags = {debounce_text_changes = 500}},
 
     -- ymalls settings
-    yamlls = {
-      filetypes = {"yaml", "yml"},
-      settings = {yaml = {schemas = require('schemastore').json.schemas()}}
-    },
+    yamlls = yamlls_module.options,
 
     -- sumneko lua options
     sumneko_lua = sumneko_lua_module.options,
