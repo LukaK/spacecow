@@ -19,6 +19,9 @@ local options = {
 
   -- syntax enable/disable
   syntax = syntax_value,
+
+  -- formatoptions
+  formatoptions = vim.opt.formatoptions - 'r' - 'o',
 }
 
 
