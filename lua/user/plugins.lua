@@ -90,6 +90,10 @@ return packer.startup(function(use)
     -- buffers management
     use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
 
+
+    -- centering on a current line
+    use {"arnamak/stay-centered.nvim", config = [[require('user.config.stay_centered')]]}
+
     -- version control: git
     use "mhinz/vim-signify"
     use "tpope/vim-fugitive"
