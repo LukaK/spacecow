@@ -69,14 +69,14 @@ return packer.startup(function(use)
     -- json schemas for language server
     use "b0o/schemastore.nvim"
 
-    -- TODO: Something is breaking with treesitter fix when you find time
     -- colorscheme and sintax highlighting
     use "sainnhe/everforest"
-    -- use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = [[require('user.config.treesitter')]] }
-    -- use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
+    use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = [[require('user.config.treesitter')]] }
+    use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
+    -- TODO: not working for laptops (devicons are missing)
     -- directory management and navigation
-    use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]] }
+    use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
 
     -- fuzzy search
     use "nvim-telescope/telescope-media-files.nvim"
