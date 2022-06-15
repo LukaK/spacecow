@@ -5,7 +5,6 @@ if not status_ok then
 end
 
 nvim_tree.setup {
-  auto_close = true,
   diagnostics = {
     enable = false,
   },
