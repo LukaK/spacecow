@@ -13,12 +13,6 @@ local M = {}
 
 M.options = {
 
-    -- clangd settings
-    clangd = {
-      filetypes = { "c", "cpp", "cc" },
-      flags = {debounce_text_changes = 500},
-    },
-
     -- jsonls settings
     jsonls = {
       settings = {
