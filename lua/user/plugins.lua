@@ -61,10 +61,11 @@ return packer.startup(function(use)
     use({ "honza/vim-snippets", after = 'ultisnips'})
 
     -- lsp
-    -- TODO: See if server configurations are ok
+    -- TODO: fix dependencies of nlsp-settings and so on
     -- TODO: Add option for lsp to be configured with configs within a project for linting, formatting and so on
-    use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]]}
+    use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]], after = "nvim-lspconfig"}
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
+    use { 'tamago324/nlsp-settings.nvim' }
 
     -- json schemas for language server
     use "b0o/schemastore.nvim"
