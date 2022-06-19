@@ -12,3 +12,6 @@ Features:
 - directory navigation
 - UI goodies
 - ...
+
+Todo:
+- fix pre commit hooks

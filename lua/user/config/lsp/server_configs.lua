@@ -25,12 +25,16 @@ M.options = {
       settings = {
         pylsp = {
           plugins = {
-            pylint = { enabled = true, executable = "pylint" },
+            pylint = { enabled = false},
             pyflakes = { enabled = false },
+            flake8 = { enabled = true },
             pycodestyle = { enabled = false },
+            pydocstyle = { enabled = false },
             jedi_completion = { fuzzy = true },
             pyls_isort = { enabled = true },
+            black = { enabled = true },
             pylsp_mypy = { enabled = true },
+            yapf = { enabled = false },
           },
         },
       },

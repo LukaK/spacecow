@@ -10,7 +10,7 @@ function M.show_line_diagnostics()
     focusable = false,
     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
     border = 'rounded',
-    source = 'always',  -- show source in diagnostic popup window
+    source = 'always', -- show source in diagnostic popup window
     prefix = ' '
   }
   vim.diagnostic.open_float(nil, opts)
@@ -60,9 +60,10 @@ M.on_attach = function(client, bufnr)
     ]])
     if vim.g.logging_level == 'debug' then
       local msg = string.format("Language server %s started!", client.name)
-      vim.notify(msg, 'info', {title = 'Nvim-config'})
+      vim.notify(msg, 'info', { title = 'Nvim-config' })
     end
-  end end
+  end
+end
 
 -- define capabilities
 local _, cmp_nvim_lsp = utils.vprequire("cmp_nvim_lsp", "user.config.lsp.utils")

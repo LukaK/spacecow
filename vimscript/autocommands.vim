@@ -1,3 +1,4 @@
+" TODO: Rewrite to lua
 " Do r r not use smart case in command line mode, extracted from https://vi.stackexchange.com/a/16511/15292.
 augroup dynamic_smartcase
   autocmd!

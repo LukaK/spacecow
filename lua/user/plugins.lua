@@ -62,7 +62,6 @@ return packer.startup(function(use)
 
     -- lsp
     -- TODO: fix dependencies of nlsp-settings and so on
-    -- TODO: Add option for lsp to be configured with configs within a project for linting, formatting and so on
     use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]], after = "nvim-lspconfig"}
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use { 'tamago324/nlsp-settings.nvim' }
@@ -129,6 +128,8 @@ return packer.startup(function(use)
     -- Highlight URLs inside vim
     use "itchyny/vim-highlighturl"
 
+    -- TODO: Autostart of vista
+    -- TODO: dataclasses not showing ok in vistaplug
     -- navigate tags and lsp symbols
     use "liuchengxu/vista.vim"
 
