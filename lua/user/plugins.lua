@@ -62,6 +62,7 @@ return packer.startup(function(use)
 
     -- lsp
     -- TODO: fix dependencies of nlsp-settings and so on
+    -- TODO: See how to simplify installation of 3rd party plugins without going into server venv and installing them in there
     use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]], after = "nvim-lspconfig"}
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use { 'tamago324/nlsp-settings.nvim' }

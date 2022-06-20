@@ -33,7 +33,8 @@ M.options = {
             jedi_completion = { fuzzy = true },
             pyls_isort = { enabled = true },
             black = { enabled = true },
-            pylsp_mypy = { enabled = true },
+            -- TODO: mypy is not working in virtualenvironments
+            pylsp_mypy = { enabled = true, dmypy = true},
             yapf = { enabled = false },
           },
         },
