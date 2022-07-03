@@ -61,8 +61,12 @@ return packer.startup(function(use)
     use({ "honza/vim-snippets", after = 'ultisnips'})
 
     -- lsp
+    -- TODO: Change diagnostics to only necessary, short messages
+    -- TODO: flake8 plugin does not take into accoutnt configuration fiel in tg-be environment, see whats up
     -- TODO: fix dependencies of nlsp-settings and so on
     -- TODO: See how to simplify installation of 3rd party plugins without going into server venv and installing them in there
+    -- TODO: fix mypy-lsp polution with .mypyd files everywhere
+    -- TODO: mypy-lsp not working in virtualenvironments ask on github
     use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]], after = "nvim-lspconfig"}
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use { 'tamago324/nlsp-settings.nvim' }
@@ -80,6 +84,7 @@ return packer.startup(function(use)
     use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
 
     -- fuzzy search
+    -- TODO: Remove test files from the search, see if you can configure it per project (for tg-be)
     use "nvim-telescope/telescope-media-files.nvim"
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}

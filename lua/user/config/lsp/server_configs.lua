@@ -34,7 +34,7 @@ M.options = {
             pyls_isort = { enabled = true },
             black = { enabled = true },
             -- TODO: mypy is not working in virtualenvironments
-            pylsp_mypy = { enabled = true, dmypy = true},
+            pylsp_mypy = { enabled = false, live_mode = true },
             yapf = { enabled = false },
           },
         },
