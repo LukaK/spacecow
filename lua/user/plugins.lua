@@ -76,6 +76,7 @@ return packer.startup(function(use)
 
     -- colorscheme and sintax highlighting
     use "sainnhe/everforest"
+    use 'shaunsingh/nord.nvim'
     use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = [[require('user.config.treesitter')]] }
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
