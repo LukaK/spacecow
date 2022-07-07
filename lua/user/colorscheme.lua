@@ -14,6 +14,14 @@ if colorscheme == "nord" then
       -- ... your lualine config
     }
   }
+  -- Example config in lua
+  vim.g.nord_contrast = true
+  vim.g.nord_borders = true
+  vim.g.nord_disable_background = false
+  vim.g.nord_italic = false
+
+  -- Load the colorscheme
+  require('nord').set()
 end
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
