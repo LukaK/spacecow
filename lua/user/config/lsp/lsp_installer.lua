@@ -30,21 +30,21 @@ for server_name, _ in pairs(server_configs.options) do
   end
 end
 
+-- Specify the default options which we'll use to setup all servers
+local common_setup_opts = {
+  on_attach = lsp_utils.on_attach,
+  capabilities = lsp_utils.capabilities,
+}
+
 -- configure servers
 -- lsp installer has to modify cmd path for servers so it
 -- overwrites configurations passed with lspconfig plugin
 lsp_installer.on_server_ready(function(server)
-  -- Specify the default options which we'll use to setup all servers
-  local opts = {
-    on_attach = lsp_utils.on_attach,
-    capabilities = lsp_utils.capabilities,
-  }
+  local opts = vim.deepcopy(common_setup_opts)
 
   -- augment servver options
   if server_configs.options[server.name] then
-    for key, value in pairs(server_configs.options[server.name]) do
-      opts[key] = value
-    end
+    opts = vim.tbl_deep_extend('force', opts, server_configs.options[server.name])
   end
 
   server:setup(opts)

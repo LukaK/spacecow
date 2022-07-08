@@ -10,6 +10,7 @@ end
 
 
 local M = {}
+local dev_config_path = vim.env["HOME"] .. "/.config/dev_tools"
 
 M.options = {
 
@@ -25,17 +26,21 @@ M.options = {
       settings = {
         pylsp = {
           plugins = {
+            -- disable unnecessary plugins
             pylint = { enabled = false},
             pyflakes = { enabled = false },
-            flake8 = { enabled = true },
             pycodestyle = { enabled = false },
             pydocstyle = { enabled = false },
-            jedi_completion = { fuzzy = true },
-            pyls_isort = { enabled = true },
-            black = { enabled = true },
-            -- TODO: mypy is not working in virtualenvironments
-            pylsp_mypy = { enabled = false, live_mode = true },
             yapf = { enabled = false },
+
+            jedi_completion = { fuzzy = true },
+            black = { enabled = true, max_line_length = 80},
+            pyls_isort = { enabled = true},
+            -- TODO: when local configuration is enabled add config file to the settings
+            flake8 = { enabled = true, config = dev_config_path .. "/flake8"},
+            -- TODO: when local configuration is enabled add python-versio option to overrides in virtualenvironment
+            pylsp_mypy = { enabled = true, live_mode = true, overrides = {"--config-file", dev_config_path .. "/mypy.ini", true} },
+
           },
         },
       },
