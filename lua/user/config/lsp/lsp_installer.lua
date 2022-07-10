@@ -16,7 +16,8 @@ nlspsettings.setup({
   local_settings_dir = ".nlsp-settings",
   local_settings_root_markers = { '.git' },
   append_default_schemas = true,
-  loader = 'json'
+  loader = 'json',
+  nvim_notify = {enable = true}
 })
 
 -- install automatically servers for which you have configurations
