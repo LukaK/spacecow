@@ -48,14 +48,14 @@ vim.api.nvim_create_autocmd("BufRead", {
 -- command does not work in command line. We need to check if we are in command
 -- line before executing this command. See also
 -- https://vi.stackexchange.com/a/20397/15292.
-vim.api.nvim_create_autocmd("FileChangedShellPost", { nested = true, callback = function() vim.notify("File changed on disk. Buffer reloaded!", 'warn', {title = 'nvim-config'}) end })
--- TODO: fix this
--- vim.api.nvim_create_autocmd({"FocusGained", "CursorHold"}, {
---   nested = true,
---   callback = function()
---     if (vim.api.nvim_exec("getcmdwintype", true) ==  "") then vim.api.nvim_command("checktime") end
---   end
--- })
+vim.api.nvim_create_autocmd(
+  "FileChangedShellPost",
+  { nested = true, callback = function() vim.notify("File changed on disk. Buffer reloaded!", 'warn', {title = 'nvim-config'}) end }
+)
+vim.api.nvim_create_autocmd({"FocusGained", "CursorHold"}, {
+  nested = true,
+  callback = function() if (vim.api.nvim_exec("call getcmdwintype()", true) ==  "") then vim.api.nvim_command("checktime") end end
+})
 
 
 -- TODO: rewrite this
