@@ -20,15 +20,3 @@ function s:resume_edit_pos() abort
     execute "normal! g`\"zvzz"
   endif
 endfunction
-
-" TODO: Rewrite this fully in lua file
-" " Automatically reload the file if it is changed outside of Nvim, see
-" " https://unix.stackexchange.com/a/383044/221410. It seems that `checktime`
-" " command does not work in command line. We need to check if we are in command
-" " line before executing this command. See also
-" " https://vi.stackexchange.com/a/20397/15292.
-" augroup auto_read
-"   autocmd!
-"   autocmd FileChangedShellPost * call v:lua.vim.notify("File changed on disk. Buffer reloaded!", 'warn', {'title': 'nvim-config'})
-"   autocmd FocusGained,CursorHold * if getcmdwintype() == '' | checktime | endif
-" augroup END
