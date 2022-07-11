@@ -54,3 +54,27 @@ vim.api.nvim_create_autocmd({"FocusGained", "CursorHold"}, {
   nested = true,
   callback = function() if (vim.api.nvim_exec("call getcmdwintype()", true) ==  "") then vim.api.nvim_command("checktime") end end
 })
+
+
+-- resume edit position
+vim.cmd[[
+  function s:resume_edit_pos() abort
+    if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      let l:args = v:argv  " command line arguments
+      for l:cur_arg in l:args
+        " Check if a go-to-line command is given.
+        let idx = match(l:cur_arg, '\v^\+(\d){1,}$')
+        if idx != -1
+          return
+        endif
+      endfor
+
+      execute "normal! g`\"zvzz"
+    endif
+  endfunction
+
+  augroup resume_edit_position
+    autocmd!
+    autocmd BufReadPost * call s:resume_edit_pos()
+  augroup END
+]]
