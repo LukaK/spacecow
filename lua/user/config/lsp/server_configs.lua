@@ -12,6 +12,7 @@ end
 local M = {}
 local dev_config_path = vim.env["HOME"] .. "/.config/dev_tools"
 
+-- TODO: Move all server configs level below and keep lsp settings in above level
 M.options = {
 
     -- jsonls settings

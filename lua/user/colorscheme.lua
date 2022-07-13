@@ -1,3 +1,4 @@
+-- define colorscheme
 local colorscheme = "nord"
 
 -- everforrest colorscheme configuration
@@ -6,7 +7,9 @@ if colorscheme == "everforest" then
   vim.g.everforest_better_performance = 1
 end
 
+-- nord colorscheme configuration
 if colorscheme == "nord" then
+  -- TODO: This should be moved to lualine config
   require('lualine').setup {
     options = {
       -- ... your lualine config

@@ -70,6 +70,8 @@ keymap("x", "c", "\"_c", opts)
 -- register, see also https://stackoverflow.com/q/10723700/6064933.
 keymap("x", "p", "\"_c<ESC>p", opts)
 
+-- TODO: Move all mappings to their corresponding configurations
+
 -- nvim-tree mappings
 keymap("n", "<leader>F", ":NvimTreeToggle<CR>", opts)
 

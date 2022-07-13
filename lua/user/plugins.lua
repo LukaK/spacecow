@@ -24,6 +24,7 @@ if not status_ok then
   return
 end
 
+-- TODO: fix imports and configuration so that they are ok
 return packer.startup(function(use)
 
     -- it is recommened to put impatient.nvim before any other plugins

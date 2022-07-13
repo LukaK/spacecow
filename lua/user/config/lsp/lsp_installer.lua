@@ -1,8 +1,9 @@
+-- TODO: see lnsp installer instructions and update configurations
+--- TODO: Add support to load multiple modules not just one
 local utils = require "user.utils"
 local server_configs_status, server_configs = utils.vprequire("user.config.lsp.server_configs", "nvim-lsp-installer")
 local lsp_utils_status, lsp_utils = utils.vprequire("user.config.lsp.utils", "nvim-lsp-installer")
 local lsp_installer_status_ok, lsp_installer = utils.vprequire("nvim-lsp-installer", "nvim-lsp-installer")
-local nlspsettings_status, nlspsettings = utils.vprequire("lspconfig", "nvim-lsp-installer")
 local nlspsettings_status, nlspsettings = utils.vprequire("nlspsettings", "nvim-lsp-installer")
 
 -- TODO: Fix print to include more info where is the problem
