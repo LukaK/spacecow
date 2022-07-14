@@ -9,14 +9,7 @@ end
 
 -- nord colorscheme configuration
 if colorscheme == "nord" then
-  -- TODO: This should be moved to lualine config
-  require('lualine').setup {
-    options = {
-      -- ... your lualine config
-      theme = 'nord'
-      -- ... your lualine config
-    }
-  }
+
   -- Example config in lua
   vim.g.nord_contrast = true
   vim.g.nord_borders = true
