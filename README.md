@@ -3,7 +3,10 @@
 ### Introduction
 Neovim configuration for personal use.
 
-Features:
+### Instalation
+TODO
+
+### Features:
 - language server configuration for python, yaml, json, lua and vimscript,
 - fuzzy finder with telescope
 - markdown tools
@@ -13,5 +16,5 @@ Features:
 - UI goodies
 - ...
 
-Todo:
+### TODO
 - fix pre commit hooks
