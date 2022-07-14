@@ -87,7 +87,7 @@ keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
 keymap("n", "gb", ":BufferLinePick<CR>", opts)
 
 -- telescope keybindings
-keymap("n", "Ff", ":Telescope find_files<CR>", opts)
+keymap("n", "Ff", ":Telescope git_files<CR>", opts)
 keymap("n", "FF", ":Telescope find_files hidden=true<CR>", opts)
 keymap("n", "Fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "FG", ":lua require('telescope.builtin').live_grep({additional_args=function() return {'--hidden'} end})<cr>", opts)
@@ -114,9 +114,9 @@ keymap("n", "<leader><CR>", "m`o<ESC>", opts)
 keymap("n", "<F3>", ":<C-U> set spell!<CR>", opts)
 keymap("i", "<F3>", ":<C-U> set spell!<CR>", opts)
 
--- TODO: Add condition if you are in neovim directory or add abs path
+-- TODO: See if this works for reloading
 -- reload vim source files
-keymap("n", "<leader>R", ":runtime! lua/user/**/*.lua<CR>", opts)
+keymap("n", "<leader>R", ":runtime! " .. vim.fn.stdpath("config") .. "/lua/user/**/*.lua<CR>", opts)
 
 -- remove highlights
 keymap("n", "<esc>", ":nohlsearch<cr>", opts)

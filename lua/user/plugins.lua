@@ -53,7 +53,6 @@ return packer.startup(function(use)
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use "hrsh7th/cmp-nvim-lsp"
-    -- TODO: See what is this and how to use it
     use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
 
     -- snippets
@@ -81,12 +80,10 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = [[require('user.config.treesitter')]] }
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
-    -- TODO: not working for laptops (devicons are missing)
     -- directory management and navigation
     use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
 
     -- fuzzy search
-    -- TODO: Remove test files from the search, see if you can configure it per project (for tg-be)
     use "nvim-telescope/telescope-media-files.nvim"
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
@@ -128,7 +125,7 @@ return packer.startup(function(use)
     use "haya14busa/vim-asterisk"
 
     -- statusline
-    use {'nvim-lualine/lualine.nvim', config = [[require('user.config.lualine')]]}
+    use {'nvim-lualine/lualine.nvim', after = "nord.nvim" ,  config = [[require('user.config.lualine')]]}
 
     -- indent line
     use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}

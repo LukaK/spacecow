@@ -1,7 +1,6 @@
 -- local function file_exists(name)
 local utils = require "user.utils"
 
--- TODO: Move python3 virtualenv vesrion to python 3.10
 -- define python 3 path
 local python3_path = vim.fn.exepath("python")
 local python3_pyenv_path = vim.env["PYENV_ROOT"] .. '/versions/py3nvim/bin/python'
