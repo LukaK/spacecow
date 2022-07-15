@@ -57,7 +57,7 @@ return packer.startup(function(use)
 
     -- snippets
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-    use "SirVer/ultisnips"
+    use {"SirVer/ultisnips", config = [[require('user.config.ultisnips')]]}
     use({ "honza/vim-snippets", after = 'ultisnips'})
 
     -- lsp
@@ -80,7 +80,7 @@ return packer.startup(function(use)
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
 
     -- directory management and navigation
-    use {'kyazdani42/nvim-tree.lua', cmd = {"NvimTreeToggle"}, config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
+    use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
 
     -- fuzzy search
     use "nvim-telescope/telescope-media-files.nvim"
@@ -89,7 +89,7 @@ return packer.startup(function(use)
     use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
 
     -- code commenting
-    use "vim-scripts/tComment"
+    use {"vim-scripts/tComment", config = [[require('user.config.t-comment')]]}
 
     -- buffers management
     use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
@@ -100,7 +100,7 @@ return packer.startup(function(use)
 
     -- version control: git
     use "mhinz/vim-signify"
-    use "tpope/vim-fugitive"
+    use {"tpope/vim-fugitive", config = [[require('user.config.vim-fugitive')]]}
     use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
     -- when integration with fugitive comes
     -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
@@ -135,7 +135,7 @@ return packer.startup(function(use)
     -- TODO: Autostart?
     -- TODO: dataclasses not showing ok in vistaplug
     -- navigate tags and lsp symbols
-    use "liuchengxu/vista.vim"
+    use {"liuchengxu/vista.vim", config = [[require('user.config.vista')]]}
 
     -- Add nvim-autopairs
     use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
@@ -192,7 +192,7 @@ return packer.startup(function(use)
     -- Toggle terminal
     use {"akinsho/toggleterm.nvim", config = [[require('user.config.toggleterm')]]}
 
-    --  TODO: Works but see why it is not working for F (telescope) mappings
+    --  TODO: Add which key registration for plugins that don't have a mapping in which key
     -- showing keybindings
     use {"folke/which-key.nvim",
       config = function()
