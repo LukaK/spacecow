@@ -61,8 +61,6 @@ return packer.startup(function(use)
     use({ "honza/vim-snippets", after = 'ultisnips'})
 
     -- lsp
-    -- TODO: Change diagnostics to only necessary, short messages
-    -- TODO: flake8 plugin does not take into accoutnt configuration fiel in tg-be environment, see whats up
     -- TODO: fix dependencies of nlsp-settings and so on
     -- TODO: fix nlsp-settings to load local configuration
     -- TODO: See how to simplify installation of 3rd party plugins without going into server venv and installing them in there
@@ -132,8 +130,6 @@ return packer.startup(function(use)
     -- Highlight URLs inside vim
     use "itchyny/vim-highlighturl"
 
-    -- TODO: Autostart?
-    -- TODO: dataclasses not showing ok in vistaplug
     -- navigate tags and lsp symbols
     use {"liuchengxu/vista.vim", config = [[require('user.config.vista')]]}
 

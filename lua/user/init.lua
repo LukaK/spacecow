@@ -1,4 +1,4 @@
-require "user.helpers"
+require "user.utils"
 require "user.globals"
 require "user.plugins"
 require "user.colorscheme"
