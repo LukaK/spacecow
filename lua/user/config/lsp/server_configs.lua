@@ -13,6 +13,7 @@ local M = {}
 local dev_config_path = vim.env["HOME"] .. "/.config/dev_tools"
 
 -- TODO: Move all server configs level below and keep lsp settings in above level
+local nvim_lsp = require 'lspconfig'
 M.options = {
 
     -- jsonls settings
@@ -24,6 +25,7 @@ M.options = {
 
     -- pylsp settings
     pylsp = {
+      root_dir = nvim_lsp.util.root_pattern('.git'),
       settings = {
         pylsp = {
           plugins = {
@@ -34,12 +36,12 @@ M.options = {
             pydocstyle = { enabled = false },
             yapf = { enabled = false },
 
+            -- TODO: move configuration to jamls file for nlsp settings
+            -- TODO: See how to manage plugins from commands to avoid manipulating venv of lsp servers
             jedi_completion = { fuzzy = true },
             black = { enabled = true, max_line_length = 80},
             pyls_isort = { enabled = true},
-            -- TODO: when local configuration is enabled add config file to the settings
             flake8 = { enabled = true, config = dev_config_path .. "/flake8"},
-            -- TODO: when local configuration is enabled add python-versio option to overrides in virtualenvironment
             pylsp_mypy = { enabled = true, live_mode = true, overrides = {"--config-file", dev_config_path .. "/mypy.ini", true} },
 
           },
