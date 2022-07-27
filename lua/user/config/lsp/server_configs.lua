@@ -2,17 +2,21 @@ local utils = require "user.utils"
 
 -- load bigger server configurations
 local yamlls_status, schemastore = utils.vprequire("schemastore", "server_configs")
-local sumneko_lua_status, sumneko_lua_module = utils.vprequire("user.config.lsp.sumneko_lua", "server_configs")
-
-if not sumneko_lua_status or not yamlls_status then
+if not yamlls_status then
   return
 end
 
 
 local M = {}
 
--- TODO: Move all server configs level below and keep lsp settings in above level
+-- lua runtime information
+local lua_runtime_path = vim.split(package.path, ";")
+table.insert(lua_runtime_path, "lua/?.lua")
+table.insert(lua_runtime_path, "lua/?/init.lua")
+
 local nvim_lsp = require 'lspconfig'
+-- TODO: Move to sepparate tables for every server
+-- TODO: Add comments how to configure servers
 M.options = {
 
     -- jsonls settings
@@ -34,7 +38,16 @@ M.options = {
     },
 
     -- sumneko lua options
-    sumneko_lua = sumneko_lua_module.options,
+    sumneko_lua = {
+      settings = {
+        Lua = {
+          -- Setup your lua path
+          runtime = {path = lua_runtime_path},
+          -- Make the server aware of Neovim runtime files
+          workspace = {library = vim.api.nvim_get_runtime_file("", true)},
+        },
+      },
+    },
 }
 
 return M
