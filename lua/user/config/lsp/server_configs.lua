@@ -1,8 +1,8 @@
 local utils = require "user.utils"
 
 -- load bigger server configurations
+local yamlls_status, schemastore = utils.vprequire("schemastore", "server_configs")
 local sumneko_lua_status, sumneko_lua_module = utils.vprequire("user.config.lsp.sumneko_lua", "server_configs")
-local yamlls_status, yamlls_module = utils.vprequire("user.config.lsp.yamlls", "server_configs")
 
 if not sumneko_lua_status or not yamlls_status then
   return
@@ -16,11 +16,7 @@ local nvim_lsp = require 'lspconfig'
 M.options = {
 
     -- jsonls settings
-    jsonls = {
-      settings = {
-        json = {schemas = require('schemastore').json.schemas(),},
-      },
-    },
+    jsonls = {settings = {json = {schemas = require('schemastore').json.schemas()}}},
 
     -- pylsp settings
     pylsp = {
@@ -32,7 +28,10 @@ M.options = {
     vimls = {flags = {debounce_text_changes = 500}},
 
     -- ymalls settings
-    yamlls = yamlls_module.options,
+    yamlls ={
+      filetypes = {"yaml", "yml"},
+      settings = {yaml = {schemas = schemastore.json.schemas()}}
+    },
 
     -- sumneko lua options
     sumneko_lua = sumneko_lua_module.options,

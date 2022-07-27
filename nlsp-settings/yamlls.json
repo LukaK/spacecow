@@ -1,18 +1,5 @@
-local utils = require "user.utils"
-local status_ok, schemastore = utils.vprequire("schemastore", "yamlls")
-if not status_ok then
-  return
-end
-
-local M = {}
-
-M.options = {
-  filetypes = {"yaml", "yml"},
-  settings = {
-    yaml = {
-      schemas = schemastore.json.schemas(),
-      -- aws cloudformation tags
-      customTags = {
+{
+    "yaml.customTags": [
         "!And scalar",
         "!And map",
         "!And sequence",
@@ -60,10 +47,6 @@ M.options = {
         "!Split sequence",
         "!Join scalar",
         "!Join map",
-        "!Join sequence",
-      },
-    }
-  }
+        "!Join sequence"
+    ]
 }
-
-return M
