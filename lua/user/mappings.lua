@@ -78,7 +78,7 @@ keymap("n", "<leader><CR>", "m`o<ESC>", opts)
 keymap("n", "<F3>", ":<C-U> set spell!<CR>", opts)
 keymap("i", "<F3>", ":<C-U> set spell!<CR>", opts)
 
--- TODO: See if this works for reloading
+-- TODO: Does not work: test with stay-centered plugin
 -- reload vim source files
 keymap("n", "<leader>R", ":runtime! " .. vim.fn.stdpath("config") .. "/lua/user/**/*.lua<CR>", opts)
 

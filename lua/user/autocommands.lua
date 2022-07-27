@@ -29,7 +29,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end
 })
 
--- TODO: Fix this so that you use nvim notify plugin ( plugins should be loaded first? )
 -- display a message when the current file is not in utf-8 format.
 vim.api.nvim_create_autocmd("BufRead", {
   nested = true,

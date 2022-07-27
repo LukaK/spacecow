@@ -24,14 +24,14 @@ if not status_ok then
   return
 end
 
--- TODO: fix imports and configuration so that they are ok
+-- TODO: fix configuration defer times so that some functionality like telescope is available right now
 return packer.startup(function(use)
 
     -- it is recommened to put impatient.nvim before any other plugins
-    use {'lewis6991/impatient.nvim', config = [[require('impatient')]]}
+    use {'lewis6991/impatient.nvim', config = function() require('impatient') end}
 
     -- package manager itself
-    use{"wbthomason/packer.nvim", config = [[require('user.config.packer')]]}
+    use{"wbthomason/packer.nvim", config = function() require('user.config.packer') end}
 
     -- useful lua functions for plugins
     use "nvim-lua/popup.nvim"
@@ -39,32 +39,43 @@ return packer.startup(function(use)
     use "kyazdani42/nvim-web-devicons"
 
     -- notification plugin
-    use({
+    use {
       "rcarriga/nvim-notify",
       config = function()
         vim.defer_fn(function() require('user.config.nvim-notify') end, 2000)
       end
-    })
+    }
+
 
     -- completions plugins
     use {"onsails/lspkind-nvim", event = "BufEnter"}
-    use {"hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('user.config.nvim-cmp')]]}
     use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
-    use "hrsh7th/cmp-nvim-lsp"
+    use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
     use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
+    use {
+      "hrsh7th/nvim-cmp",
+      after = "lspkind-nvim",
+      config = function()
+        vim.defer_fn(function() require('user.config.nvim-cmp') end, 2000)
+      end
+    }
 
     -- snippets
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
-    use {"SirVer/ultisnips", config = [[require('user.config.ultisnips')]]}
-    use({ "honza/vim-snippets", after = 'ultisnips'})
+    use { "honza/vim-snippets", after = 'ultisnips'}
+    use {"SirVer/ultisnips", config = function() vim.defer_fn(function() require('user.config.ultisnips') end, 2000) end}
 
     -- lsp
     -- TODO: See how to simplify installation of 3rd party plugins without going into server venv and installing them in there
-    use {"williamboman/nvim-lsp-installer", config = [[require('user.config.lsp.lsp_installer')]], after = "nvim-lspconfig"}
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
-    use { 'tamago324/nlsp-settings.nvim' }
+    use 'tamago324/nlsp-settings.nvim'
+    use {
+      "williamboman/nvim-lsp-installer",
+      after = {"nvim-lspconfig", "nlsp-settings.nvim", 'schemastore.nvim'},
+      config = function() vim.defer_fn(function() require('user.config.lsp.lsp_installer') end, 2000) end
+    }
 
     -- json schemas for language server
     use "b0o/schemastore.nvim"
@@ -72,92 +83,120 @@ return packer.startup(function(use)
     -- colorscheme and sintax highlighting
     use "sainnhe/everforest"
     use 'shaunsingh/nord.nvim'
-    use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = [[require('user.config.treesitter')]] }
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
+    -- TODO: See if you can defer this
+    use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = function() require('user.config.treesitter') end}
 
     -- directory management and navigation
-    use {'kyazdani42/nvim-tree.lua', config = [[require('user.config.nvim-tree')]], after = "nvim-web-devicons"}
+    use {
+      'kyazdani42/nvim-tree.lua',
+      after ="nvim-web-devicons",
+      config = function() vim.defer_fn(function() require('user.config.nvim-tree') end, 2000) end
+    }
 
     -- fuzzy search
-    use "nvim-telescope/telescope-media-files.nvim"
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use {'nvim-telescope/telescope.nvim', after = {"plenary.nvim"}, config = [[require('user.config.telescope')]]}
-    use {'nvim-telescope/telescope-symbols.nvim', after = 'telescope.nvim'}
+    use {'nvim-telescope/telescope-symbols.nvim', after = "telescope.nvim"}
+    use {"nvim-telescope/telescope-media-files.nvim"}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+    use {
+      'nvim-telescope/telescope.nvim',
+      after = {"plenary.nvim", "telescope-media-files.nvim", "telescope-fzf-native.nvim"},
+      config = function() vim.defer_fn(function() require('user.config.telescope') end, 2000) end
+    }
 
     -- code commenting
-    use {"vim-scripts/tComment", config = [[require('user.config.t-comment')]]}
+    use {
+      "vim-scripts/tComment",
+      config = function() vim.defer_fn(function() require('user.config.t-comment') end, 2000) end
+    }
 
     -- buffers management
-    use {"akinsho/bufferline.nvim", config = [[require('user.config.bufferline')]], after = "nvim-web-devicons"}
-
+    use {
+      "akinsho/bufferline.nvim",
+      after = "nvim-web-devicons",
+      config = function() vim.defer_fn(function() require('user.config.bufferline') end, 2000) end
+    }
 
     -- centering on a current line
-    use {"arnamak/stay-centered.nvim", config = [[require('user.config.stay_centered')]]}
+    use {
+      "arnamak/stay-centered.nvim",
+      config = function() vim.defer_fn(function() require('stay-centered') end, 2000) end
+    }
 
     -- version control: git
     use "mhinz/vim-signify"
-    use {"tpope/vim-fugitive", config = [[require('user.config.vim-fugitive')]]}
-    use({ "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } })
+    use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
+    use {
+      "tpope/vim-fugitive",
+      config = function() vim.defer_fn(function() require('user.config.vim-fugitive') end, 2000) end
+    }
     -- when integration with fugitive comes
     -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
     -- Python plugins
-    use({ "Vimjas/vim-python-pep8-indent", ft = { "python" } })
-    use({ "jeetsukumaran/vim-pythonsense", ft = { "python" } })
+    use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
+    use { "jeetsukumaran/vim-pythonsense", ft = { "python" } }
 
     -- interactive shell for testing programs
-    use({ "hkupty/iron.nvim", ft = { "python" }, config = [[require('user.config.iron')]]})
+    use {
+      "hkupty/iron.nvim",
+      ft = { "python" },
+      config = function() vim.defer_fn(function() require('user.config.iron') end, 2000) end
+    }
 
     -- Show match number and index for searching
     use {
       'kevinhwang91/nvim-hlslens',
       branch = 'main',
       keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
-      config = [[require('user.config.hlslens')]]
+      config = function() vim.defer_fn(function() require('user.config.hlslens') end, 2000) end
     }
 
     -- -- Stay after pressing * and search selected text
     use "haya14busa/vim-asterisk"
 
     -- statusline
-    use {'nvim-lualine/lualine.nvim', after = "nord.nvim" ,  config = [[require('user.config.lualine')]]}
+    use {
+      'nvim-lualine/lualine.nvim',
+      after = "nord.nvim" ,
+      config = function() vim.defer_fn(function() require('user.config.lualine') end, 2000) end
+    }
 
     -- indent line
-    use {"lukas-reineke/indent-blankline.nvim", config = [[require('user.config.indent-blankline')]]}
+    use {"lukas-reineke/indent-blankline.nvim", config = function() vim.defer_fn(function() require('user.config.indent-blankline') end, 2000) end}
 
     -- Highlight URLs inside vim
     use "itchyny/vim-highlighturl"
 
     -- navigate tags and lsp symbols
-    use {"liuchengxu/vista.vim", config = [[require('user.config.vista')]]}
+    use {"liuchengxu/vista.vim", config = function() vim.defer_fn(function() require('user.config.vista') end, 2000) end}
 
     -- Add nvim-autopairs
-    use {"windwp/nvim-autopairs", after = "nvim-cmp", config = [[require('user.config.nvim-autopairs')]]}
+    use {"windwp/nvim-autopairs", after = "nvim-cmp", config = function() vim.defer_fn(function() require('user.config.nvim-autopairs') end, 2000) end}
 
     -- Repeat vim motions
     use "tpope/vim-repeat"
 
-
     -- -- Another markdown plugin
-    use({ "plasticboy/vim-markdown", ft = { "markdown" }, config = [[require('user.config.vim-markdown')]]})
+    use { "plasticboy/vim-markdown", ft = { "markdown" }, config = function() vim.defer_fn(function() require('user.config.vim-markdown') end, 2000) end}
     --
     -- -- Faster footnote generation
-    use({ "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" } })
+    use { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" }}
     --
     -- -- Vim tabular plugin for manipulate tabular, required by markdown plugins
-    use({ "godlygeek/tabular", cmd = { "Tabularize" } })
+    use { "godlygeek/tabular", cmd = { "Tabularize" } }
 
     -- -- markdown previewer
-    use({
+    use {
       "iamcco/markdown-preview.nvim",
       run = function()
         fn["mkdp#util#install"]()
       end,
       ft = { "markdown" },
-    })
+    }
 
     -- Markdown JSON header highlight plugin
-    use({ "elzr/vim-json", ft = { "json", "markdown" } })
+    use { "elzr/vim-json", ft = { "json", "markdown" }}
 
     -- Additional powerful text object for vim, this plugin should be studied
     -- carefully to use its full power
@@ -184,7 +223,7 @@ return packer.startup(function(use)
     use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
 
     -- Toggle terminal
-    use {"akinsho/toggleterm.nvim", config = [[require('user.config.toggleterm')]]}
+    use {"akinsho/toggleterm.nvim", config = function() vim.defer_fn(function() require('user.config.toggleterm') end, 2000) end}
 
     --  TODO: Add which key registration for plugins that don't have a mapping in which key
     -- showing keybindings
@@ -198,7 +237,7 @@ return packer.startup(function(use)
     use 'jdhao/whitespace.nvim'
 
     -- better quickfix windows
-    use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = [[require('user.config.bqf')]] })
+    use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = function() vim.defer_fn(function() require('user.config.bqf') end, 2000) end})
 
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins
