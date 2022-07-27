@@ -1,10 +1,4 @@
-local utils = require "user.utils"
-local status_ok, iron = utils.vprequire("iron", "iron")
-if not status_ok then
-  return
-end
-
-iron.core.setup {
+require('iron').core.setup {
   config = {
     -- If iron should expose `<plug>(...)` mappings for the plugins
     should_map_plug = false,
@@ -21,8 +15,8 @@ iron.core.setup {
     },
     -- repl_open_cmd =crequire('iron.view').curry.bottom(40),
     repl_open_cmd ="vertical 60 split",
-    -- how the REPL window will be opened, the default is opening
-    -- a float window of height 40 at the bottom.
+  -- how the REPL window will be opened, the default is opening
+  -- a float window of height 40 at the bottom.
   },
   -- Iron doesn't set keymaps by default anymore. Set them here
   -- or use `should_map_plug = true` and map from you vim files

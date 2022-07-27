@@ -1,10 +1,4 @@
-local utils = require "user.utils"
-local status_ok, indent_blankline = utils.vprequire("indent_blankline", "indent_blankline")
-if not status_ok then
-  return
-end
-
-indent_blankline.setup({
+require('indent_blankline').setup({
   -- U+2502 may also be a good choice, it will be on the middle of cursor.
   -- U+250A is also a good choice
   char = "▏",

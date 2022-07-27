@@ -1,10 +1,4 @@
-local utils = require "user.utils"
-local status_ok, bufferline = utils.vprequire("bufferline", "bufferline")
-if not status_ok then
-  return
-end
-
-bufferline.setup({
+require('bufferline').setup({
   options = {
     numbers = "buffer_id",
     close_command = "bdelete! %d",

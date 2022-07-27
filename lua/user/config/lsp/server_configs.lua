@@ -1,15 +1,8 @@
 -- to configure new server put here only options that are programatically assigned
 -- the rest of the options should be configured with nlsp settings
 
-local utils = require "user.utils"
-
--- load bigger server configurations
-local yamlls_status, schemastore = utils.vprequire("schemastore", "server_configs")
-local nvim_lsp_status, nvim_lsp = utils.vprequire("lspconfig", "server_configs")
-
-if not yamlls_status or not nvim_lsp_status then
-  return
-end
+local schemastore = require "schemastore"
+local nvim_lsp = require "lspconfig"
 
 
 -- jsonls configuration

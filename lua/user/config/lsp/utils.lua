@@ -1,4 +1,3 @@
-local utils = require "user.utils"
 local M = {}
 
 local api = vim.api
@@ -66,8 +65,7 @@ M.on_attach = function(client, bufnr)
 end
 
 -- define capabilities
-local _, cmp_nvim_lsp = utils.vprequire("cmp_nvim_lsp", "user.config.lsp.utils")
-M.capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities())
+M.capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Change diagnostic signs.

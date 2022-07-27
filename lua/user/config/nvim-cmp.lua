@@ -1,10 +1,5 @@
--- load cmp module
-local utils = require "user.utils"
-local status_ok_cmp, cmp = utils.vprequire("cmp", "nvim-cmp")
-local status_ok_lspkind, lspkind = utils.vprequire("lspkind", "nvim-cmp")
-if not status_ok_cmp or not status_ok_lspkind then
-  return
-end
+local cmp = require "cmp"
+local lspkind = require "lspkind"
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

@@ -1,8 +1,4 @@
-local utils = require "user.utils"
-local status_ok, nvim_autopairs = utils.vprequire('nvim-autopairs', "nvim-autopairs")
-if not status_ok then
-  return
-end
+local nvim_autopairs = require "nvim-autopairs"
 
 nvim_autopairs.setup({
   disable_filetype = { "TelescopePrompt" },

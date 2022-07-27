@@ -1,10 +1,4 @@
-local utils = require "user.utils"
-local status_ok, configs = utils.vprequire("nvim-treesitter.configs", "treesitter")
-if not status_ok then
-  return
-end
-
-configs.setup({
+require('nvim-treesitter.configs').setup({
   ensure_installed = "all",
   ignore_install = {"ocamllex"}, -- List of parsers to ignore installing
   highlight = {

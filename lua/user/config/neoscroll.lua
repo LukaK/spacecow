@@ -1,12 +1,4 @@
-local utils = require "user.utils"
-local status_ok_neoscroll, neoscroll = utils.vprequire("neoscroll", "neoscroll")
-local status_ok_neoscroll_config, neoscroll_config = utils.vprequire("neoscroll.config", "neoscroll")
-
-if not status_ok_neoscroll or not status_ok_neoscroll_config then
-  return
-end
-
-neoscroll.setup({
+require('neoscroll').setup({
   easing_function = "quadratic",
 })
 
@@ -26,4 +18,4 @@ t["zt"] = { "zt", { "10" } }
 t["zz"] = { "zz", { "10" } }
 t["zb"] = { "zb", { "10" } }
 
-neoscroll_config.set_mappings(t)
+require('neoscroll.config').set_mappings(t)

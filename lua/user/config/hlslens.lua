@@ -1,13 +1,7 @@
-local utils = require "user.utils"
-local status_ok, hlslens = utils.vprequire("hlslens", "hlslens")
-if not status_ok then
-  return
-end
-
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
 
-hlslens.setup({
+require('hlslens').setup({
   calm_down = true,
   nearest_only = true,
 })

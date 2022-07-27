@@ -1,8 +1,4 @@
-local utils = require "user.utils"
-local status_ok, nvim_notify = utils.vprequire("notify", "nvim-notify")
-if not status_ok then
-  return
-end
+local nvim_notify = require "notify"
 
 nvim_notify.setup({
   -- Animation style
