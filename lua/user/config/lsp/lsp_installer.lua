@@ -1,6 +1,5 @@
 local server_configs = require "user.config.lsp.server_configs"
 local lsp_utils = require "user.config.lsp.utils"
-local lsp_installer = require "nvim-lsp-installer"
 local nlspsettings = require "nlspsettings"
 
 nlspsettings.setup({
@@ -12,33 +11,25 @@ nlspsettings.setup({
   nvim_notify = {enable = true}
 })
 
--- install automatically servers for which you have configurations
+-- server names
+local server_names = {}
 for server_name, _ in pairs(server_configs.options) do
-  local server_is_found, server = lsp_installer.get_server(server_name)
-  if server_is_found then
-    if not server:is_installed() then
-      vim.notify("Installing " .. server_name, "info", {title = "nvim-lsp-installer"})
-      server:install()
-    end
-  end
+  server_names[#server_names + 1] = server_name
 end
 
--- Specify the default options which we'll use to setup all servers
+-- configure servers
+require("nvim-lsp-installer").setup{ensure_installed = server_names}
+local lspconfig = require "lspconfig"
+
+-- global server configs
 local common_setup_opts = {
   on_attach = lsp_utils.on_attach,
   capabilities = lsp_utils.capabilities,
 }
 
--- configure servers
--- lsp installer has to modify cmd path for servers so it
--- overwrites configurations passed with lspconfig plugin
-lsp_installer.on_server_ready(function(server)
+-- setup servers
+for server_name, server_config in pairs(server_configs.options) do
   local opts = vim.deepcopy(common_setup_opts)
-
-  -- augment servver options
-  if server_configs.options[server.name] then
-    opts = vim.tbl_deep_extend('force', opts, server_configs.options[server.name])
-  end
-
-  server:setup(opts)
-end)
+  opts = vim.tbl_deep_extend('force', opts, server_config)
+  lspconfig[server_name].setup(opts)
+end

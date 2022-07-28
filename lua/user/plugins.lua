@@ -67,7 +67,8 @@ return packer.startup(function(use)
     use {"SirVer/ultisnips", config = function() vim.defer_fn(function() require('user.config.ultisnips') end, 2000) end}
 
     -- lsp
-    -- TODO: See how to simplify installation of 3rd party plugins without going into server venv and installing them in there
+    -- TODO: Migrate lsp-installer to mason
+    -- TODO: Add shortcut for accesing code codumentation and function stubs
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use 'tamago324/nlsp-settings.nvim'
     use {
