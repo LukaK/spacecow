@@ -101,7 +101,7 @@ return packer.startup(function(use)
     use {
       'nvim-telescope/telescope.nvim',
       after = {"plenary.nvim", "telescope-media-files.nvim", "telescope-fzf-native.nvim"},
-      config = function() vim.defer_fn(function() require('user.config.telescope') end, 2000) end
+      config = function() require('user.config.telescope') end
     }
 
     -- code commenting
@@ -114,13 +114,13 @@ return packer.startup(function(use)
     use {
       "akinsho/bufferline.nvim",
       after = "nvim-web-devicons",
-      config = function() vim.defer_fn(function() require('user.config.bufferline') end, 2000) end
+      config = function() require('user.config.bufferline') end
     }
 
     -- centering on a current line
     use {
       "arnamak/stay-centered.nvim",
-      config = function() vim.defer_fn(function() require('stay-centered') end, 2000) end
+      config = function() require('stay-centered') end
     }
 
     -- version control: git
@@ -149,7 +149,7 @@ return packer.startup(function(use)
       'kevinhwang91/nvim-hlslens',
       branch = 'main',
       keys = {{'n', '*'}, {'n', '#'}, {'n', 'n'}, {'n', 'N'}},
-      config = function() vim.defer_fn(function() require('user.config.hlslens') end, 2000) end
+      config = function() require('user.config.hlslens') end
     }
 
     -- -- Stay after pressing * and search selected text
@@ -159,11 +159,11 @@ return packer.startup(function(use)
     use {
       'nvim-lualine/lualine.nvim',
       after = "nord.nvim" ,
-      config = function() vim.defer_fn(function() require('user.config.lualine') end, 2000) end
+      config = function() require('user.config.lualine') end
     }
 
     -- indent line
-    use {"lukas-reineke/indent-blankline.nvim", config = function() vim.defer_fn(function() require('user.config.indent-blankline') end, 2000) end}
+    use {"lukas-reineke/indent-blankline.nvim", config = function() require('user.config.indent-blankline') end}
 
     -- Highlight URLs inside vim
     use "itchyny/vim-highlighturl"
@@ -178,7 +178,7 @@ return packer.startup(function(use)
     use "tpope/vim-repeat"
 
     -- -- Another markdown plugin
-    use { "plasticboy/vim-markdown", ft = { "markdown" }, config = function() vim.defer_fn(function() require('user.config.vim-markdown') end, 2000) end}
+    use { "plasticboy/vim-markdown", ft = { "markdown" }, config = function() require('user.config.vim-markdown') end}
     --
     -- -- Faster footnote generation
     use { "vim-pandoc/vim-markdownfootnotes", ft = { "markdown" }}
@@ -212,7 +212,7 @@ return packer.startup(function(use)
     use {
       "karb94/neoscroll.nvim",
       config = function()
-        vim.defer_fn(function() require('user.config.neoscroll') end, 2000)
+        require('user.config.neoscroll')
       end
     }
 
@@ -223,7 +223,7 @@ return packer.startup(function(use)
     use {"gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]]}
 
     -- Toggle terminal
-    use {"akinsho/toggleterm.nvim", config = function() vim.defer_fn(function() require('user.config.toggleterm') end, 2000) end}
+    use {"akinsho/toggleterm.nvim", config = function() require('user.config.toggleterm') end}
 
     --  TODO: Add which key registration for plugins that don't have a mapping in which key
     -- showing keybindings
