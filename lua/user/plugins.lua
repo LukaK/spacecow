@@ -67,14 +67,15 @@ return packer.startup(function(use)
     use {"SirVer/ultisnips", config = function() vim.defer_fn(function() require('user.config.ultisnips') end, 2000) end}
 
     -- lsp
-    -- TODO: Migrate lsp-installer to mason
     -- TODO: Add shortcut for accesing code codumentation and function stubs
+    -- TODO: See how server plugins are handled without directly modifying lsp virtualenvs
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use 'tamago324/nlsp-settings.nvim'
+    use { "williamboman/mason.nvim", after = {"nvim-lspconfig", "nlsp-settings.nvim"} }
     use {
-      "williamboman/nvim-lsp-installer",
-      after = {"nvim-lspconfig", "nlsp-settings.nvim", 'schemastore.nvim'},
-      config = function() vim.defer_fn(function() require('user.config.lsp.lsp_installer') end, 2000) end
+      "williamboman/mason-lspconfig.nvim",
+      after = "mason.nvim",
+      config = function() vim.defer_fn(function() require('user.config.lsp.mason-lspconfig') end, 2000) end
     }
 
     -- json schemas for language server

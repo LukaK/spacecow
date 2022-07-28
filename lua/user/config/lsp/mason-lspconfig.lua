@@ -18,8 +18,8 @@ for server_name, _ in pairs(server_configs.options) do
 end
 
 -- configure servers
-require("nvim-lsp-installer").setup{ensure_installed = server_names}
-local lspconfig = require "lspconfig"
+require("mason").setup {}
+require("mason-lspconfig").setup {ensure_installed = server_names}
 
 -- global server configs
 local common_setup_opts = {
@@ -31,5 +31,5 @@ local common_setup_opts = {
 for server_name, server_config in pairs(server_configs.options) do
   local opts = vim.deepcopy(common_setup_opts)
   opts = vim.tbl_deep_extend('force', opts, server_config)
-  lspconfig[server_name].setup(opts)
+  require("lspconfig")[server_name].setup(opts)
 end
