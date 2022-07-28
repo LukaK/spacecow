@@ -100,7 +100,7 @@ return packer.startup(function(use)
     use {
       'nvim-telescope/telescope.nvim',
       after = {"plenary.nvim", "telescope-media-files.nvim", "telescope-fzf-native.nvim"},
-      config = function() require('user.config.telescope') end
+      config = function() vim.defer_fn(function() require('user.config.telescope') end, 500) end
     }
 
     -- code commenting
