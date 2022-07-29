@@ -20,11 +20,15 @@ telescope.load_extension("media_files")
 telescope.load_extension("fzf")
 
 -- key bindings
-local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-
-keymap("n", "Ff", ":Telescope git_files<CR>", opts)
-keymap("n", "FF", ":Telescope find_files hidden=true<CR>", opts)
-keymap("n", "Fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "FG", ":lua require('telescope.builtin').live_grep({additional_args=function() return {'--hidden'} end})<cr>", opts)
-keymap("n", "Fm", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opts)
+local wk = require "which-key"
+wk.register({
+  F = {
+    name = "file",
+    f = { "<cmd>Telescope git_files<cr>", "Find git files" },
+    F = { "<cmd>Telescope find_files hidden=true<cr>", "Find hidden files" },
+    g = { "<cmd>Telescope live_grep<cr>", "Grep files" },
+    G = {"<cmd> lua require('telescope.builtin').live_grep({additional_args=function() return {'--hidden'} end})<cr>", "Grep hidden files"},
+    m = {"<cmd> luarequire('telescope').extensions.media_files.media_files()<cr>", "Grep media files"}
+  },
+}, opts)

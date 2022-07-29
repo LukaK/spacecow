@@ -15,6 +15,5 @@ vim.g["nvim_tree_window_picker_exclude"] = {
 
 -- key bindings
 local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
-keymap("n", "<leader>f", ":NvimTreeToggle<CR>", opts)
+local wk = require "which-key"
+wk.register({["<leader>f"] = {"<cmd>NvimTreeToggle<cr>", "Open file browser"}}, opts)

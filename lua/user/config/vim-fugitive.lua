@@ -1,5 +1,4 @@
 -- key bindings
-local keymap = vim.api.nvim_set_keymap
+local wk = require "which-key"
 local opts = { noremap = true, silent = true }
-
-keymap("n", "<leader>G", ":Git<CR>", opts)
+wk.register({["<leader>G"] = {"<cmd>Git<cr>", "Open git management"}}, opts)

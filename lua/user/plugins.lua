@@ -45,6 +45,8 @@ return packer.startup(function(use)
       end
     }
 
+    -- showing keybindings
+    use {"folke/which-key.nvim", config = function() require('user.config.which-key') end}
 
     -- completions plugins
     use {"onsails/lspkind-nvim", event = "BufEnter"}
@@ -224,14 +226,6 @@ return packer.startup(function(use)
 
     -- Toggle terminal
     use {"akinsho/toggleterm.nvim", config = function() require('user.config.toggleterm') end}
-
-    --  TODO: Add which key registration for telescope
-    -- showing keybindings
-    use {"folke/which-key.nvim",
-      config = function()
-        vim.defer_fn(function() require('user.config.which-key') end, 2000)
-      end
-    }
 
     -- show and trim trailing whitespaces
     use 'jdhao/whitespace.nvim'
