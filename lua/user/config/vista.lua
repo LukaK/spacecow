@@ -2,4 +2,4 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-keymap("n", "<leader>f", ":Vista!!<CR>", opts)
+keymap("n", "<leader>F", ":Vista!!<CR>", opts)

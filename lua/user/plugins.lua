@@ -91,7 +91,7 @@ return packer.startup(function(use)
     use {
       'kyazdani42/nvim-tree.lua',
       after ="nvim-web-devicons",
-      config = function() vim.defer_fn(function() require('user.config.nvim-tree') end, 2000) end
+      config = function() require('user.config.nvim-tree') end
     }
 
     -- fuzzy search
