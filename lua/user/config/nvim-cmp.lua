@@ -86,6 +86,7 @@ cmp.setup({
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
     { name = 'cmdline' }, -- for vim cmdline
+    { name = 'nvim_lsp_signature_help' }
   },
   completion = {
     keyword_length = 1,

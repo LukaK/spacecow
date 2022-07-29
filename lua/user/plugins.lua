@@ -53,6 +53,8 @@ return packer.startup(function(use)
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lsp", after = "nvim-cmp"}
     use {"hrsh7th/cmp-cmdline", after = "nvim-cmp"}
+    use { 'hrsh7th/cmp-nvim-lsp-signature-help', after = "nvim-cmp" }
+
     use {
       "hrsh7th/nvim-cmp",
       after = "lspkind-nvim",
@@ -223,7 +225,7 @@ return packer.startup(function(use)
     -- Toggle terminal
     use {"akinsho/toggleterm.nvim", config = function() require('user.config.toggleterm') end}
 
-    --  TODO: Add which key registration for plugins that don't have a mapping in which key
+    --  TODO: Add which key registration for telescope
     -- showing keybindings
     use {"folke/which-key.nvim",
       config = function()
