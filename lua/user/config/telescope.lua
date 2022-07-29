@@ -23,7 +23,7 @@ telescope.load_extension("fzf")
 local opts = { noremap = true, silent = true }
 local wk = require "which-key"
 wk.register({
-  F = {
+  f = {
     name = "file",
     f = { "<cmd>Telescope git_files<cr>", "Find git files" },
     F = { "<cmd>Telescope find_files hidden=true<cr>", "Find hidden files" },
