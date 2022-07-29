@@ -46,6 +46,8 @@ return packer.startup(function(use)
     }
 
     -- showing keybindings
+    -- TODO: Add descriptions to all relevant keymappings
+    -- TODO: Filter key mappings that are not relevant
     use {"folke/which-key.nvim", config = function() require('user.config.which-key') end}
 
     -- completions plugins
