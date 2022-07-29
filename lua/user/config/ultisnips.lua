@@ -1,5 +1,4 @@
 -- key bindings
--- TODO: Snippets do not work
 vim.g.UltiSnipsEnableSnipMate = 0
 vim.g.UltiSnipsExpandTrigger = '<leader>e'
 vim.g.UltiSnipsJumpForwardTrigger = '<leader>a'

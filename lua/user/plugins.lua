@@ -70,7 +70,7 @@ return packer.startup(function(use)
     -- snippets
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
     use { "honza/vim-snippets", after = 'ultisnips'}
-    use {"SirVer/ultisnips", config = function() vim.defer_fn(function() require('user.config.ultisnips') end, 2000) end}
+    use {"SirVer/ultisnips", config = function() require('user.config.ultisnips') end}
 
     -- lsp
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
