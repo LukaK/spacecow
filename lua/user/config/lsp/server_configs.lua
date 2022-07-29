@@ -9,6 +9,7 @@ local nvim_lsp = require "lspconfig"
 local jsonls_config = {settings = {json = {schemas = require('schemastore').json.schemas()}}}
 
 -- pylsp configuration
+-- to install python language server 3rd party plugins use PylspInstall command and a plugin you want
 local pylsp_config = {root_dir = nvim_lsp.util.root_pattern('.git'), flags = {debounce_text_changes = 200}}
 
 -- vimls configuration

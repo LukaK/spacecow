@@ -68,7 +68,6 @@ return packer.startup(function(use)
 
     -- lsp
     -- TODO: Add shortcut for accesing code codumentation and function stubs
-    -- TODO: See how server plugins are handled without directly modifying lsp virtualenvs
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use 'tamago324/nlsp-settings.nvim'
     use { "williamboman/mason.nvim", after = {"nvim-lspconfig", "nlsp-settings.nvim"} }
@@ -85,7 +84,6 @@ return packer.startup(function(use)
     use "sainnhe/everforest"
     use 'shaunsingh/nord.nvim'
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter"}
-    -- TODO: See if you can defer this
     use { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate', config = function() require('user.config.treesitter') end}
 
     -- directory management and navigation
@@ -102,7 +100,7 @@ return packer.startup(function(use)
     use {
       'nvim-telescope/telescope.nvim',
       after = {"plenary.nvim", "telescope-media-files.nvim", "telescope-fzf-native.nvim"},
-      config = function() vim.defer_fn(function() require('user.config.telescope') end, 500) end
+      config = function() vim.defer_fn(function() require('user.config.telescope') end, 150) end
     }
 
     -- code commenting
