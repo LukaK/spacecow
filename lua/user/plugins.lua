@@ -67,7 +67,6 @@ return packer.startup(function(use)
     use {"SirVer/ultisnips", config = function() vim.defer_fn(function() require('user.config.ultisnips') end, 2000) end}
 
     -- lsp
-    -- TODO: Add shortcut for accesing code codumentation and function stubs
     use {"neovim/nvim-lspconfig", after = "cmp-nvim-lsp"}
     use 'tamago324/nlsp-settings.nvim'
     use { "williamboman/mason.nvim", after = {"nvim-lspconfig", "nlsp-settings.nvim"} }
