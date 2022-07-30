@@ -16,5 +16,13 @@ TODO
 - UI goodies
 - ...
 
-### TODO
-- fix pre commit hooks
+### Development
+Requirements:
+- luarocks
+- pre-commit
+
+```
+luarocks install --local --server=https://luarocks.org/dev luaformatter
+luarocks install --local luacheck
+pre-commit install --hook-type pre-commit
+```
