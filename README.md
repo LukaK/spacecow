@@ -4,7 +4,7 @@
 Neovim configuration for personal use.
 
 ### Instalation
-TODO
+TODO ( test on fresh installation )
 
 ### Features:
 - language server configuration for python, yaml, json, lua and vimscript,
