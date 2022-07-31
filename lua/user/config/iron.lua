@@ -40,3 +40,18 @@ require('iron').core.setup {
     italic = true
   }
 }
+
+-- document mappings for iron
+local wk = require "which-key"
+wk.register(
+  {
+    ["<space>sc"] = {"Iron: send line"},
+    ["<space>sf"] = {"Iron: send a file"},
+    ["<space>sl"] = {"Iron: send a line"},
+    ["<space>sm"] = {"Iron: send a mark"},
+    ["<space>mc"] = {"Iron: mark a motion"},
+    ["<space>md"] = {"Iron: remove mark"},
+    ["<space>s<space>"] = {"Iron: interrupt"},
+    ["<space>sq"] = {"Iron: exit"},
+    ["<space>cl"] = {"Iron: clear"},
+  }, {mode = "n"})

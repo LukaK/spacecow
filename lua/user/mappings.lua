@@ -2,19 +2,23 @@
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
+local wk = require "which-key"
 
 -- remap for easy access to command mode
 keymap("n", ";", ":", opts)
 keymap("x", ";", ":", opts)
 
 -- easy save
-keymap("n", "<leader>s", ":<C-U>update<CR>", opts)
+wk.register({["<leader>s"] = { ":<C-U>update<cr>" ,"Save a file"}}, opts)
 
 -- saves the file if modified and quit
-keymap("n", "<leader>q", ":<C-U>x<CR>", opts)
+wk.register({["<leader>q"] = {":<c-u>x<cr>", "Save a file and quit"}}, opts)
 
 -- quit all open buffers
-keymap("n", "<leader>Q", ":<C-U>qa!<CR>", opts)
+wk.register({["<leader>Q"] = {":<c-u>qa!<cr>", "Quit all open buffers"}}, opts)
+
+-- insert newline from normal mode without going to insert mode
+wk.register({["<leader><cr>"] = {"m`o<esc>", "Insert newline in normal mode"}}, opts)
 
 -- " Navigation in the location and quickfix list
 keymap("n", "[l", ":<C-U>lprevious<CR>zv", opts)
@@ -69,9 +73,6 @@ keymap("x", "c", "\"_c", opts)
 -- replace visual selection with text in register, but not contaminate the
 -- register, see also https://stackoverflow.com/q/10723700/6064933.
 keymap("x", "p", "\"_c<ESC>p", opts)
-
--- insert newline from normal mode without going to insert mode
-keymap("n", "<leader><CR>", "m`o<ESC>", opts)
 
 -- toggle spell checking (autosave does not play well with z=, so we disable it
 -- when we are doing spell checking)

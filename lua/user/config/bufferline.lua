@@ -53,11 +53,15 @@ require('bufferline').setup({
 })
 
 -- key bindings
-local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
+local wk = require "which-key"
 
-keymap("n", "<Right>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<Left>", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "<S-Right>", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "<S-Left>", ":BufferLineMovePrev<CR>", opts)
-keymap("n", "gb", ":BufferLinePick<CR>", opts)
+wk.register(
+  {
+    ["<Right>"] = {":BufferLineCycleNext<CR>", "Go to the right buffer"},
+    ["<Left>"] = {":BufferLineCyclePrev<CR>", "Go to the left buffer"},
+    ["<S-Right>"] = {":BufferLineMoveNext<CR>", "Move buffer to the right"},
+    ["<S-Left>"] = {":BufferLineMovePrev<CR>", "Move buffer to the left"},
+    ["gb"] = {":BufferLinePick<CR>", "Pick a buffer"},
+  }
+  , opts)

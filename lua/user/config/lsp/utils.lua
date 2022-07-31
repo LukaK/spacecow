@@ -87,4 +87,27 @@ lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
 
+-- document lsp mappings
+
+-- key bindings
+local wk = require "which-key"
+local opts = { noremap = true, silent = true }
+wk.register(
+  {
+    ["K"] = {"Lsp: hover"},
+    ["gs"] = {"Lsp: signature"},
+    ["gd"] = {"Lsp: go to definition"},
+    ["gr"] = {"Lsp: list references"},
+    ["gi"] = {"Lsp: show line diagnostics"},
+    ["gI"] = {"Lsp: open diagnostics quickfix window"},
+    ["[d"] = {"Lsp: go to previous diagnostics erro"},
+    ["]d"] = {"Lsp: go to next diagnostics erro"},
+    ["<leader>wl"] = {"Lsp: list workspace folders"},
+    ["<leader>wa"] = {"Lsp: add workspace folder"},
+    ["<leader>wr"] = {"Lsp: remove workspace folder"},
+    ["<leader>rn"] = {"Lsp: rename"},
+    ["<leader>rf"] = {"Lsp: format"},
+  }
+  , opts)
+
 return M

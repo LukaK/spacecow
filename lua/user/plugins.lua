@@ -46,7 +46,6 @@ return packer.startup(function(use)
     }
 
     -- showing keybindings
-    -- TODO: Add descriptions to all relevant keymappings
     -- TODO: Filter key mappings that are not relevant
     use {"folke/which-key.nvim", config = function() require('user.config.which-key') end}
 
@@ -193,9 +192,7 @@ return packer.startup(function(use)
     -- -- markdown previewer
     use {
       "iamcco/markdown-preview.nvim",
-      run = function()
-        fn["mkdp#util#install"]()
-      end,
+      run = function() fn["mkdp#util#install"]() end,
       ft = { "markdown" },
     }
 
@@ -215,9 +212,7 @@ return packer.startup(function(use)
     -- Smoothie motions
     use {
       "karb94/neoscroll.nvim",
-      config = function()
-        require('user.config.neoscroll')
-      end
+      config = function() require('user.config.neoscroll') end
     }
 
     -- vim sintax for toml
