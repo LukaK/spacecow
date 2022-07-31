@@ -18,6 +18,11 @@ local vimls_config = {flags = {debounce_text_changes = 500}}
 -- yamlls configuration
 local yamlls_config = {filetypes = {"yaml", "yml"}, settings = {yaml = {schemas = schemastore.json.schemas()}}}
 
+-- TODO: setup bash language server
+local bashls_config = {}
+
+-- TODO: Add dockerfile language server
+
 -- sumneko_lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
 table.insert(lua_runtime_path, "lua/?.lua")
@@ -39,7 +44,8 @@ M.options = {
   pylsp = pylsp_config,
   vimls = vimls_config,
   yamlls =yamlls_config,
-  sumneko_lua = sumneko_lua_config
+  sumneko_lua = sumneko_lua_config,
+  bashls = bashls_config,
 }
 
 return M
