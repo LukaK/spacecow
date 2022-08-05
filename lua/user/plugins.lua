@@ -66,6 +66,7 @@ return packer.startup(function(use)
       end
     }
 
+    -- TODO: Move to luasnip
     -- snippets
     use {"quangnguyen30192/cmp-nvim-ultisnips", after = {'nvim-cmp', 'ultisnips'}}
     use { "honza/vim-snippets", after = 'ultisnips'}
@@ -129,10 +130,7 @@ return packer.startup(function(use)
     -- version control: git
     use "mhinz/vim-signify"
     use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
-    use {
-      "tpope/vim-fugitive",
-      config = function() vim.defer_fn(function() require('user.config.vim-fugitive') end, 2000) end
-    }
+    use {"tpope/vim-fugitive", config = function() require('user.config.vim-fugitive') end}
     -- when integration with fugitive comes
     -- use({"rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]]})
 
