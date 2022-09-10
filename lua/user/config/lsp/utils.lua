@@ -40,6 +40,7 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 
   -- actions
+  -- TODO: Reformatting not working for pylsp wrap for 100 characters
   buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   if client.resolved_capabilities.document_formatting then
     buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
