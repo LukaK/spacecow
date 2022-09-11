@@ -149,7 +149,8 @@ local options = {
   -- https://github.com/neovim/neovim/wiki/FAQ#how-to-change-cursor-color-in-the-terminal
   guicursor = {"n-v-c:block-Cursor/lCursor", "i-ci-ve:ver25-Cursor2/lCursor2", "r-cr:hor20", "o:hor20"},
 
-  signcolumn = "auto:2",
+  -- signcolumn automatically opened
+  signcolumn = "yes:2",
 
   -- remove certain character from file name pattern matching
   isfname = vim.opt.isfname - '=' - ',',
