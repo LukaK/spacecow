@@ -85,7 +85,7 @@ cmp.setup({
     { name = 'nvim_lua' }, -- for nvim lua function
     { name = 'path' }, -- for path completion
     { name = 'buffer', keyword_length = 4 }, -- for buffer word completion
-    { name = 'cmdline' }, -- for vim cmdline
+    -- { name = 'cmdline' }, -- for vim cmdline
     { name = 'nvim_lsp_signature_help' }
   },
   completion = {

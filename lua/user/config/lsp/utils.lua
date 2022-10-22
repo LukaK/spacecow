@@ -42,12 +42,13 @@ M.on_attach = function(client, bufnr)
   -- actions
   -- TODO: Reformatting not working for pylsp wrap for 100 characters
   buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
-  end
+  buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+  -- if client.server_capabilities.document_formatting then
+  --   buf_set_keymap("n", "<leader>rf", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+  -- end
 
   -- highlight variable and usage in the buffer
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.cmd([[
       hi link LspReferenceRead Visual
       hi link LspReferenceText Visual
@@ -66,7 +67,8 @@ M.on_attach = function(client, bufnr)
 end
 
 -- define capabilities
-M.capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
+-- M.capabilities = require('cmp_nvim_lsp').update_capabilities(lsp.protocol.make_client_capabilities())
+M.capabilities = require('cmp_nvim_lsp').default_capabilities(lsp.protocol.make_client_capabilities())
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Change diagnostic signs.
