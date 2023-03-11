@@ -23,12 +23,12 @@ local bashls_config = {}
 
 -- TODO: Add dockerfile language server
 
--- sumneko_lua configuration
+-- lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
 table.insert(lua_runtime_path, "lua/?.lua")
 table.insert(lua_runtime_path, "lua/?/init.lua")
 
-local sumneko_lua_config = {
+local lua_config = {
   settings = {
     Lua = {
       runtime = {path = lua_runtime_path},
@@ -44,7 +44,7 @@ M.options = {
   pylsp = pylsp_config,
   vimls = vimls_config,
   yamlls =yamlls_config,
-  sumneko_lua = sumneko_lua_config,
+  lua_ls = lua_config,
   bashls = bashls_config,
 }
 
