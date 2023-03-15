@@ -50,7 +50,7 @@ return packer.startup(function(use)
     use {"folke/which-key.nvim", config = function() require('user.config.which-key') end}
 
     -- completions plugins
-    use {"onsails/lspkind-nvim", event = "BufEnter"}
+    use {"onsails/lspkind-nvim"}
     use {"hrsh7th/cmp-buffer", after = "nvim-cmp"}
     use {"hrsh7th/cmp-nvim-lua", after = "nvim-cmp"}
     use {"hrsh7th/cmp-path", after = "nvim-cmp"}
@@ -79,7 +79,7 @@ return packer.startup(function(use)
     use {
       "williamboman/mason-lspconfig.nvim",
       after = "mason.nvim",
-      config = function() vim.defer_fn(function() require('user.config.lsp.mason-lspconfig') end, 2000) end
+      config = function() require('user.config.lsp.mason-lspconfig') end
     }
 
     -- json schemas for language server
