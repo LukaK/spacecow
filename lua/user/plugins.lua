@@ -108,6 +108,18 @@ return packer.startup(function(use)
       config = function() vim.defer_fn(function() require('user.config.telescope') end, 150) end
     }
 
+    --
+    -- -- chat gpt
+    -- use({
+    --   "jackMort/ChatGPT.nvim",
+    --   requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim"
+    --   },
+    --   config = function() vim.defer_fn(function() require('user.config.gpt') end, 150) end
+    -- })
+
     -- code commenting
     use {
       "vim-scripts/tComment",
