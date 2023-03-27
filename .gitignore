@@ -1,3 +1,4 @@
 plugin/*
 spell/*spl
 *.luarc.json
+lua/environment.lua
