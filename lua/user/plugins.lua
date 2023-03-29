@@ -109,16 +109,16 @@ return packer.startup(function(use)
     }
 
 
-    -- chat gpt
-    use({
-      "jackMort/ChatGPT.nvim",
-      requires = {
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-telescope/telescope.nvim"
-      },
-      config = function() vim.defer_fn(function() require('user.config.gpt') end, 3000) end
-    })
+    -- -- chat gpt
+    -- use({
+    --   "jackMort/ChatGPT.nvim",
+    --   requires = {
+    --     "MunifTanjim/nui.nvim",
+    --     "nvim-lua/plenary.nvim",
+    --     "nvim-telescope/telescope.nvim"
+    --   },
+    --   config = function() vim.defer_fn(function() require('user.config.gpt') end, 3000) end
+    -- })
 
     -- code commenting
     use {
