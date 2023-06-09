@@ -150,13 +150,6 @@ return packer.startup(function(use)
     use { "Vimjas/vim-python-pep8-indent", ft = { "python" } }
     use { "jeetsukumaran/vim-pythonsense", ft = { "python" } }
 
-    -- interactive shell for testing programs
-    use {
-      "hkupty/iron.nvim",
-      ft = { "python" },
-      config = function() vim.defer_fn(function() require('user.config.iron') end, 2000) end
-    }
-
     -- Show match number and index for searching
     use {
       'kevinhwang91/nvim-hlslens',
