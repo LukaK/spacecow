@@ -22,6 +22,8 @@ local yamlls_config = {filetypes = {"yaml", "yml"}, settings = {yaml = {schemas 
 local bashls_config = {}
 
 -- TODO: Add dockerfile language server
+local dockerls_config = {}
+local docker_compose_language_service_config = {}
 
 -- lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
@@ -46,6 +48,8 @@ M.options = {
   yamlls =yamlls_config,
   lua_ls = lua_config,
   bashls = bashls_config,
+  dockerls = dockerls_config,
+  docker_compose_language_service = docker_compose_language_service_config
 }
 
 return M
