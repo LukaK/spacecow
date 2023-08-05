@@ -25,6 +25,9 @@ local bashls_config = {}
 local dockerls_config = {}
 local docker_compose_language_service_config = {}
 
+-- terraform language server
+local terraform_ls_config = {}
+
 -- lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
 table.insert(lua_runtime_path, "lua/?.lua")
@@ -49,7 +52,8 @@ M.options = {
   lua_ls = lua_config,
   bashls = bashls_config,
   dockerls = dockerls_config,
-  docker_compose_language_service = docker_compose_language_service_config
+  docker_compose_language_service = docker_compose_language_service_config,
+  terraformls = terraform_ls_config,
 }
 
 return M
