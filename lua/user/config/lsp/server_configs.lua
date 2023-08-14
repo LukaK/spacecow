@@ -16,7 +16,7 @@ local pylsp_config = {root_dir = nvim_lsp.util.root_pattern('.git'), flags = {de
 local vimls_config = {flags = {debounce_text_changes = 500}}
 
 -- yamlls configuration
-local yamlls_config = {filetypes = {"yaml", "yml"}, settings = {yaml = {schemas = schemastore.json.schemas()}}}
+local yamlls_config = {filetypes = {"yaml", "yml"}, settings = {yaml = {schemas = schemastore.yaml.schemas()}}}
 
 -- TODO: setup bash language server
 local bashls_config = {}
@@ -27,6 +27,9 @@ local docker_compose_language_service_config = {}
 
 -- terraform language server
 local terraform_ls_config = {}
+
+-- ansible language server
+local ansible_ls_config = {}
 
 -- lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
@@ -54,6 +57,7 @@ M.options = {
   dockerls = dockerls_config,
   docker_compose_language_service = docker_compose_language_service_config,
   terraformls = terraform_ls_config,
+  ansiblels = ansible_ls_config,
 }
 
 return M

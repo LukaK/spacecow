@@ -233,6 +233,12 @@ return packer.startup(function(use)
     -- better quickfix windows
     use({ "kevinhwang91/nvim-bqf", event = "FileType qf", config = function() vim.defer_fn(function() require('user.config.bqf') end, 2000) end})
 
+    -- terraform
+    -- use({"hashivim/vim-terraform"})
+
+    -- ansible file detenction
+    use({"pearofducks/ansible-vim"})
+
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins
     if packer_bootstrap then
