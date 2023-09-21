@@ -5,6 +5,10 @@ require('nvim-tree').setup {
   view = {
     number = true,
     relativenumber = true,
+    width = {
+      min = 40,
+      max = 40
+    }
   }
 }
 
