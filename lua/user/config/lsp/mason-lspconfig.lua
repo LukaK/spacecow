@@ -11,15 +11,9 @@ nlspsettings.setup({
   nvim_notify = {enable = true}
 })
 
--- server names
-local server_names = {}
-for server_name, _ in pairs(server_configs.options) do
-  server_names[#server_names + 1] = server_name
-end
-
 -- configure servers
 require("mason").setup {}
-require("mason-lspconfig").setup {ensure_installed = server_names}
+require("mason-lspconfig").setup {ensure_installed = server_configs.server_versions}
 
 -- global server configs
 local common_setup_opts = {
