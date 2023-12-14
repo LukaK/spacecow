@@ -2,7 +2,8 @@
 local utils = require "user.utils"
 
 -- define python 3 path
-local python3_path = vim.fn.exepath("python")
+-- local python3_path = vim.fn.exepath("python")
+local python3_path = "/usr/bin/python"
 local python3_pyenv_path = vim.env["PYENV_ROOT"] .. '/versions/py3nvim/bin/python'
 
 if utils.file_exists(python3_pyenv_path) then
