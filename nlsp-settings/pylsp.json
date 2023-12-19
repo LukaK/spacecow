@@ -8,11 +8,11 @@
     "pylsp.plugins.pyls_isort.enabled": true,
 
     "pylsp.plugins.flake8.enabled": true,
-    "pylsp.plugins.flake8.config": "/home/luka/.config/dev_tools/flake8",
+    "pylsp.plugins.flake8.config": "~/.config/dev_tools/flake8",
 
     "pylsp.plugins.pylsp_mypy.enabled": true,
     "pylsp.plugins.pylsp_mypy.live_mode": true,
-    "pylsp.plugins.pylsp_mypy.overrides": ["--config-file", "/home/luka/.config/dev_tools/mypy.ini", true],
+    "pylsp.plugins.pylsp_mypy.overrides": ["--config-file", "~/.config/dev_tools/mypy.ini", true],
 
     "pylsp.plugins.pylint.enabled": false,
     "pylsp.plugins.pyflakes.enabled": false,
