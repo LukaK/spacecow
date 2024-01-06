@@ -28,10 +28,15 @@ local dockerls_config = {}
 local terraform_ls_config = {}
 
 -- ansible language server
+-- TODO: Install ansible lint
 local ansible_ls_config = {}
 
 -- ansible language server
 local helm_ls_config = {}
+
+-- go language server
+-- TODO: install delve and staticcheck
+local gopls_config = {}
 
 -- lua configuration
 local lua_runtime_path = vim.split(package.path, ";")
@@ -49,7 +54,7 @@ local lua_config = {
 
 -- export options
 local M = {}
-M.server_versions = {"jsonls", "pylsp@1.7.4", "vimls", "yamlls", "lua_ls", "bashls", "dockerls", "terraformls", "ansiblels", "helm_ls"}
+M.server_versions = {"jsonls", "pylsp@1.7.4", "vimls", "yamlls", "lua_ls", "bashls", "dockerls", "terraformls", "ansiblels", "helm_ls", "gopls"}
 M.options = {
   jsonls = jsonls_config,
   pylsp = pylsp_config,
@@ -61,6 +66,7 @@ M.options = {
   terraformls = terraform_ls_config,
   ansiblels = ansible_ls_config,
   helm_ls = helm_ls_config,
+  gopls = gopls_config,
 }
 
 return M
