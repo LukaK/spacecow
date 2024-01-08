@@ -10,6 +10,7 @@ local jsonls_config = {settings = {json = {schemas = require('schemastore').json
 
 -- pylsp configuration
 -- to install python language server 3rd party plugins use PylspInstall command and a plugin you want
+-- TODO: Instal flake8
 local pylsp_config = {root_dir = nvim_lsp.util.root_pattern('.git'), flags = {debounce_text_changes = 200}}
 
 -- vimls configuration
