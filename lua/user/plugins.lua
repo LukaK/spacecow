@@ -109,7 +109,10 @@ return packer.startup(function(use)
     }
 
     -- github copilot integration
-    use {'github/copilot.vim'}
+    use {
+      'github/copilot.vim',
+      config = function() require('user.config.copilot') end
+    }
 
 
     -- code commenting
