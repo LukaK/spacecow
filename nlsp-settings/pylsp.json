@@ -12,7 +12,6 @@
 
     "pylsp.plugins.pylsp_mypy.enabled": true,
     "pylsp.plugins.pylsp_mypy.live_mode": true,
-    "pylsp.plugins.pylsp_mypy.overrides": ["--config-file", "~/.config/dev_tools/mypy.ini", true],
 
     "pylsp.plugins.pylint.enabled": false,
     "pylsp.plugins.pyflakes.enabled": false,
