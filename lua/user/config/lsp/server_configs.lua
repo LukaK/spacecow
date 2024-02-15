@@ -55,7 +55,8 @@ local lua_config = {
 
 -- export options
 local M = {}
-M.server_versions = {"jsonls", "pylsp@1.7.4", "vimls", "yamlls", "lua_ls", "bashls", "dockerls", "terraformls", "ansiblels", "helm_ls", "gopls"}
+-- to fix version use @ i.e. pylsp@1.7.4
+M.server_versions = {"jsonls", "pylsp", "vimls", "yamlls", "lua_ls", "bashls", "dockerls", "terraformls", "ansiblels", "helm_ls", "gopls"}
 M.options = {
   jsonls = jsonls_config,
   pylsp = pylsp_config,
